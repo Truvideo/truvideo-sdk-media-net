@@ -1,4 +1,4 @@
-
+﻿
 using System;
 using Foundation;
 using ObjCRuntime;
@@ -31,15 +31,15 @@ interface MediaResponse
 	NSUrl UploadedFileURL { get; }
 }
 
-// @interface TruvideoMedia : NSObject
-[BaseType (typeof(NSObject), Name = "_TtC13TruvideoMedia13TruvideoMedia")]
+// @interface TruvideoMediaSdk : NSObject
+[BaseType (typeof(NSObject), Name = "_TtC13TruvideoMedia16TruvideoMediaSdk")]
 [DisableDefaultCtor]
-interface TruvideoMedia
+interface TruvideoMediaSdk
 {
-	// @property (readonly, nonatomic, strong, class) TruvideoMedia * _Nonnull shared;
+	// @property (readonly, nonatomic, strong, class) TruvideoMediaSdk * _Nonnull shared;
 	[Static]
 	[Export ("shared", ArgumentSemantic.Strong)]
-	TruvideoMedia Shared { get; }
+	TruvideoMediaSdk Shared { get; }
 
 	// -(void)uploadWithPath:(NSString * _Nonnull)path completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
 	[Export ("uploadWithPath:completion:")]

@@ -314,10 +314,10 @@ SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 @end
 
 
-SWIFT_CLASS("_TtC13TruvideoMedia13TruvideoMedia")
-@interface TruvideoMedia : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedia * _Nonnull shared;)
-+ (TruvideoMedia * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS("_TtC13TruvideoMedia16TruvideoMediaSdk")
+@interface TruvideoMediaSdk : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMediaSdk * _Nonnull shared;)
++ (TruvideoMediaSdk * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (void)uploadWithPath:(NSString * _Nonnull)path completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

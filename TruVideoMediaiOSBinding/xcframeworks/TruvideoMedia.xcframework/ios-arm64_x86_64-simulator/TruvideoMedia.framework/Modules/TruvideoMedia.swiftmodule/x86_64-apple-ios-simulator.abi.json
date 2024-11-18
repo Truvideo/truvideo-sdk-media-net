@@ -27,8 +27,8 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "TruvideoMedia",
-        "printedName": "TruvideoMedia",
+        "name": "TruvideoMediaSdk",
+        "printedName": "TruvideoMediaSdk",
         "children": [
           {
             "kind": "Var",
@@ -37,14 +37,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TruvideoMedia",
-                "printedName": "TruvideoMedia.TruvideoMedia",
-                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia"
+                "name": "TruvideoMediaSdk",
+                "printedName": "TruvideoMedia.TruvideoMediaSdk",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk"
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(cpy)shared",
-            "mangledName": "$s13TruvideoMediaAAC6sharedABvpZ",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk(cpy)shared",
+            "mangledName": "$s13TruvideoMedia0aB3SdkC6sharedACvpZ",
             "moduleName": "TruvideoMedia",
             "static": true,
             "declAttributes": [
@@ -64,14 +64,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TruvideoMedia",
-                    "printedName": "TruvideoMedia.TruvideoMedia",
-                    "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia"
+                    "name": "TruvideoMediaSdk",
+                    "printedName": "TruvideoMedia.TruvideoMediaSdk",
+                    "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(cm)shared",
-                "mangledName": "$s13TruvideoMediaAAC6sharedABvgZ",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk(cm)shared",
+                "mangledName": "$s13TruvideoMedia0aB3SdkC6sharedACvgZ",
                 "moduleName": "TruvideoMedia",
                 "static": true,
                 "implicit": true,
@@ -148,8 +148,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)uploadWithPath:completion:",
-            "mangledName": "$s13TruvideoMediaAAC6upload4path10completionySS_yAA0B8ResponseCSg_s5Error_pSgtctF",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk(im)uploadWithPath:completion:",
+            "mangledName": "$s13TruvideoMedia0aB3SdkC6upload4path10completionySS_yAA0B8ResponseCSg_s5Error_pSgtctF",
             "moduleName": "TruvideoMedia",
             "objc_name": "uploadWithPath:completion:",
             "declAttributes": [
@@ -166,14 +166,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TruvideoMedia",
-                "printedName": "TruvideoMedia.TruvideoMedia",
-                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia"
+                "name": "TruvideoMediaSdk",
+                "printedName": "TruvideoMedia.TruvideoMediaSdk",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk"
               }
             ],
             "declKind": "Constructor",
-            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)init",
-            "mangledName": "$s13TruvideoMediaAACABycfc",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk(im)init",
+            "mangledName": "$s13TruvideoMedia0aB3SdkCACycfc",
             "moduleName": "TruvideoMedia",
             "overriding": true,
             "implicit": true,
@@ -187,8 +187,8 @@
           }
         ],
         "declKind": "Class",
-        "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia",
-        "mangledName": "$s13TruvideoMediaAAC",
+        "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdk",
+        "mangledName": "$s13TruvideoMedia0aB3SdkC",
         "moduleName": "TruvideoMedia",
         "declAttributes": [
           "AccessControl",
@@ -620,9 +620,9 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/douglas_poveda\/TruVideo\/net\/truvideo-net-media\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/douglas_poveda\/TruVideo\/net\/truvideo\/truvideo-sdk-media-net\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "StringLiteral",
-      "offset": 1577,
+      "offset": 1583,
       "length": 13,
       "value": "\"TruvideoMedia.MediaResponse\""
     }

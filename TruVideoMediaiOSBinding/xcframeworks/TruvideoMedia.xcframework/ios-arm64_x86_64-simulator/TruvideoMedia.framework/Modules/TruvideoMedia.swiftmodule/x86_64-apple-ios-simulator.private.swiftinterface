@@ -9,8 +9,8 @@ import TruvideoSdkMedia
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
-@_inheritsConvenienceInitializers @objc final public class TruvideoMedia : ObjectiveC.NSObject {
-  @objc public static let shared: TruvideoMedia.TruvideoMedia
+@_inheritsConvenienceInitializers @objc final public class TruvideoMediaSdk : ObjectiveC.NSObject {
+  @objc public static let shared: TruvideoMedia.TruvideoMediaSdk
   @objc final public func upload(path: Swift.String, completion: @escaping (_ result: TruvideoMedia.MediaResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit

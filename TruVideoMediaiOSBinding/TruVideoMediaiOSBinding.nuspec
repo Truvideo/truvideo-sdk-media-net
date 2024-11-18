@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>TruVideoMediaiOSBinding</id>
+    <version>0.0.6</version>
+    <authors>Truvideo</authors>
+    <description>Package Description</description>
+    <repository url="https://github.com/Truvideo/truvideo-sdk-media-net" />
+    <dependencies>
+      <group targetFramework="Xamarin.iOS1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Drawing.Common.dll" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="TruVideoMediaiOSBinding.targets" target="build/TruVideoMediaiOSBinding.targets" />
+    <file src="bin/Release/TruVideoMediaiOSBinding.dll" target="lib/xamarinios10" />
+    <file src="xcframeworks/TruvideoMedia.xcframework/**" target="build/native/TruvideoMedia.xcframework/" />
+    <file src="xcframeworks/TruvideoSdkMedia.xcframework/**" target="build/native/TruvideoSdkMedia.xcframework/" />
+  </files>
+</package>

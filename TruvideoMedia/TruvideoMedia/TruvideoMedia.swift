@@ -3,11 +3,11 @@ import Combine
 import TruvideoSdkMedia
 
 @objc
-final public class TruvideoMedia: NSObject {
+final public class TruvideoMediaSdk: NSObject {
     private var disposeBag = Set<AnyCancellable>()
 
     @objc
-    public static let shared = TruvideoMedia()
+    public static let shared = TruvideoMediaSdk()
 
     @objc public func upload(path: String, completion: @escaping (_ result: MediaResponse?, _ error: Error?) -> Void) {
         guard let url = URL(string: path) else { return }

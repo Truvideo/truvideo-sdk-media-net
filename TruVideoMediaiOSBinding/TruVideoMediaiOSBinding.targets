@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <NativeReference Include="$(MSBuildThisFileDirectory)native/TruvideoMedia.xcframework">
+            <IsCxx>false</IsCxx>
+            <Kind>Framework</Kind>
+        </NativeReference>
+        <NativeReference Include="$(MSBuildThisFileDirectory)native/TruvideoSdkMedia.xcframework">
+            <IsCxx>false</IsCxx>
+            <Kind>Framework</Kind>
+        </NativeReference>
+    </ItemGroup>
+</Project>
