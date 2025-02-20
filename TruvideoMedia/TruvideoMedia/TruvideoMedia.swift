@@ -5,31 +5,35 @@ import TruvideoSdkMedia
 @objc
 final public class TruvideoMedia: NSObject {
     private var disposeBag = Set<AnyCancellable>()
-
+    
     @objc
     public static let shared = TruvideoMedia()
-
+    
     @objc public func upload(path: String, completion: @escaping (_ result: MediaResponse?, _ error: Error?) -> Void) {
-        guard let url = URL(string: path) else { return }
-        let fileUploadRequest = TruvideoSdkMedia.FileUploadRequestBuilder(
-            fileURL: url
-        ).build()
-        let completeCancellable = fileUploadRequest.completionHandler
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { receiveCompletion in
-                switch receiveCompletion {
-                case .finished:
-                    print("finished")
-                case .failure(let error):
-                    print("failure:", error)
-                }
-            }, receiveValue: { uploadedResult in
-                completion(uploadedResult.media, nil)
-            })
-        
-        completeCancellable.store(in: &disposeBag)
         do {
-            try fileUploadRequest.upload()
+            guard let url = URL(string: path) else { return }
+            let fileUploadRequest = try TruvideoSdkMedia.FileUploadRequestBuilder(
+                fileURL: url
+            ).build()
+            let completeCancellable = fileUploadRequest.completionHandler
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { receiveCompletion in
+                    switch receiveCompletion {
+                    case .finished:
+                        print("finished")
+                    case .failure(let error):
+                        print("failure:", error)
+                    }
+                }, receiveValue: { uploadedResult in
+                    completion(uploadedResult.media, nil)
+                })
+            
+            completeCancellable.store(in: &disposeBag)
+            do {
+                try fileUploadRequest.upload()
+            } catch let error {
+                completion(nil, error)
+            }
         } catch let error {
             completion(nil, error)
         }
