@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
 // swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TruvideoSdkMedia
+import AVFoundation
 import Combine
 import CoreData
 import Foundation
@@ -13,6 +14,8 @@ import _SwiftConcurrencyShims
 public enum TruvideoSdkMediaType : Swift.String, Swift.Codable {
   case image
   case video
+  case audio
+  case document
   public init?(rawValue: Swift.String)
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
@@ -118,6 +121,12 @@ public struct TruvideoSdkMediaFileUploadProgress {
   final public let createdAt: Foundation.Date?
   final public let updatedAt: Foundation.Date?
   final public var includeInReport: Swift.Bool?
+  final public var fileType: TruvideoSdkMedia.TruvideoSdkMediaType {
+    get
+  }
+  final public var durationMilliseconds: Swift.Int? {
+    get
+  }
   final public func upload() throws
   final public func retry() throws
   final public func pause() throws
@@ -177,7 +186,7 @@ infix operator + : AdditionPrecedence
   final public func addMetadata(_ key: Swift.String, _ value: [Swift.String])
   final public func addMetadata(_ key: Swift.String, _ value: TruvideoSdkMedia.TruvideoSdkMediaMetadata)
   final public func addTag(_ key: Swift.String, _ value: Swift.String)
-  final public func build() -> TruvideoSdkMedia.TruvideoSdkMediaUploadRequest
+  final public func build() throws -> TruvideoSdkMedia.TruvideoSdkMediaUploadRequest
   final public func clearMetadata()
   final public func clearTags()
   final public func removeMetadata(_ key: Swift.String)
