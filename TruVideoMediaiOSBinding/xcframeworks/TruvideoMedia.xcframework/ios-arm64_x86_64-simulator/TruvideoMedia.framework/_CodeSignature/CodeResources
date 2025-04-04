@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/TruvideoMedia-Swift.h</key>
 		<data>
-		+Wdo2R+5IVWQjMFYZGJwaZuD+XQ=
+		YwlIvaIH4/1JcKA2fPOLxkZHekw=
 		</data>
 		<key>Headers/TruvideoMedia.h</key>
 		<data>
@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Lqfm9oc9Udidi/nYDdP060xnM/s=
+		1/Z6IVYnBaAkV1rcXeIVPrvN5LM=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		QFv2CA6X/MHUoxKj4AXKaMWWokw=
+		FBeszuvCEOGEHRqnggj7UGI5q5Q=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		XWxoU5EH7EQkEenegqcgKVUoxVc=
+		uFjGuFDLGy1wslJpDyHdWvDFFc4=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		XWxoU5EH7EQkEenegqcgKVUoxVc=
+		uFjGuFDLGy1wslJpDyHdWvDFFc4=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		aLGQbS/R7svEtDUZgodMGZCkoHw=
+		JQdBVskdVQGNqwjHU+E0ZlHn/Vc=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		QFv2CA6X/MHUoxKj4AXKaMWWokw=
+		FBeszuvCEOGEHRqnggj7UGI5q5Q=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		bMVGggQCF2XCyyUNXIt9Ucw4O1s=
+		UC/+uXHI5RTmx2m+UzWiAQn6Mtk=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		bMVGggQCF2XCyyUNXIt9Ucw4O1s=
+		UC/+uXHI5RTmx2m+UzWiAQn6Mtk=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		/VQKRykRjo7IMWQk2V2xsnb34q8=
+		3Z6aoE4jwTY20Wod9MtLotz5F/o=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			92orVrYauyYRwigaB/3zqykbkI17DHin1Tjs6NVETMs=
+			w+shu/4X/BpXnZjd5keI8vtWyf4MB8ObsFDHP8Ytx+g=
 			</data>
 		</dict>
 		<key>Headers/TruvideoMedia.h</key>
@@ -81,14 +81,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zYuWzwC0Icou7PM4qBP0nM5gDLYCF+NWyYyVMIbMpbA=
+			oUk8EP5LqcDtFAYlCW7YAky159UjQQ0CsnhfXsaYsvI=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1e/cZmulYMpCM9IwDkZ8zQ+3DYp4mZ7ucD7A3jVaVKQ=
+			TALUyfU6cRU2lpQt+0OuCcU/aFuB3oE8bP1tyUs7D7E=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -102,28 +102,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1e/cZmulYMpCM9IwDkZ8zQ+3DYp4mZ7ucD7A3jVaVKQ=
+			TALUyfU6cRU2lpQt+0OuCcU/aFuB3oE8bP1tyUs7D7E=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PRMSQ3nfBRnYaofr1FAq/aL4bK8HfVADlQBUzbA8aio=
+			gGRyU2VmIq9ez8iuroJGv68CjfyhHqW/tvOApbhuPMQ=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zYuWzwC0Icou7PM4qBP0nM5gDLYCF+NWyYyVMIbMpbA=
+			oUk8EP5LqcDtFAYlCW7YAky159UjQQ0CsnhfXsaYsvI=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			js9EvQj6DZlvm1yGz30XROSzJb/R6AcZSBuYbAN7UNE=
+			jVDi44Ky9B4a2B3VPPyM69a5Ua1HcnK0FEXULCZxT/M=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -137,14 +137,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			js9EvQj6DZlvm1yGz30XROSzJb/R6AcZSBuYbAN7UNE=
+			jVDi44Ky9B4a2B3VPPyM69a5Ua1HcnK0FEXULCZxT/M=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jzvBR2dAFhWLrpDbkGaZmPdrs4JkfzMO+Z9GD+ANz+w=
+			53RoHjya610ZqKZgMGng3jiQrP8H22JQoUco/9LlCzA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

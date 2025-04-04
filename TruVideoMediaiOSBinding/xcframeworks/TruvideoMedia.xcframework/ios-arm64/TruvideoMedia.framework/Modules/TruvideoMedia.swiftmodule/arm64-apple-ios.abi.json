@@ -26,6 +26,90 @@
         "moduleName": "TruvideoMedia"
       },
       {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TruvideoMedia"
+      },
+      {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "TruvideoMedia"
+      },
+      {
+        "kind": "Import",
+        "name": "TruvideoSdkMedia",
+        "printedName": "TruvideoSdkMedia",
+        "declKind": "Import",
+        "moduleName": "TruvideoMedia"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TruvideoMediaUploadDelegate",
+        "printedName": "TruvideoMediaUploadDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "uploadProgress",
+            "printedName": "uploadProgress(updated:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(pl)TruvideoMediaUploadDelegate(im)uploadProgressWithUpdated:",
+            "mangledName": "$s13TruvideoMedia0aB14UploadDelegateP14uploadProgress7updatedySd_tF",
+            "moduleName": "TruvideoMedia",
+            "genericSig": "<τ_0_0 where τ_0_0 : TruvideoMedia.TruvideoMediaUploadDelegate>",
+            "sugared_genericSig": "<Self where Self : TruvideoMedia.TruvideoMediaUploadDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "ObjC"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "c:@M@TruvideoMedia@objc(pl)TruvideoMediaUploadDelegate",
+        "mangledName": "$s13TruvideoMedia0aB14UploadDelegateP",
+        "moduleName": "TruvideoMedia",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "TruvideoMedia",
         "printedName": "TruvideoMedia",
@@ -84,14 +168,142 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "(any TruvideoMedia.TruvideoMediaUploadDelegate)?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(py)delegate",
+            "mangledName": "$s13TruvideoMediaAAC8delegateAA0aB14UploadDelegate_pSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl",
+              "ObjC"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any TruvideoMedia.TruvideoMediaUploadDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TruvideoMediaUploadDelegate",
+                        "printedName": "any TruvideoMedia.TruvideoMediaUploadDelegate",
+                        "usr": "c:@M@TruvideoMedia@objc(pl)TruvideoMediaUploadDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)delegate",
+                "mangledName": "$s13TruvideoMediaAAC8delegateAA0aB14UploadDelegate_pSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "(any TruvideoMedia.TruvideoMediaUploadDelegate)?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "TruvideoMediaUploadDelegate",
+                        "printedName": "any TruvideoMedia.TruvideoMediaUploadDelegate",
+                        "usr": "c:@M@TruvideoMedia@objc(pl)TruvideoMediaUploadDelegate"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)setDelegate:",
+                "mangledName": "$s13TruvideoMediaAAC8delegateAA0aB14UploadDelegate_pSgvs",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13TruvideoMediaAAC8delegateAA0aB14UploadDelegate_pSgvM",
+                "mangledName": "$s13TruvideoMediaAAC8delegateAA0aB14UploadDelegate_pSgvM",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "upload",
-            "printedName": "upload(path:completion:)",
+            "printedName": "upload(path:tag:metaData:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               },
               {
                 "kind": "TypeNominal",
@@ -148,10 +360,10 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)uploadWithPath:completion:",
-            "mangledName": "$s13TruvideoMediaAAC6upload4path10completionySS_yAA0B8ResponseCSg_s5Error_pSgtctF",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)uploadWithPath:tag:metaData:completion:",
+            "mangledName": "$s13TruvideoMediaAAC6upload4path3tag8metaData10completionySS_S2SyAA0B8ResponseCSg_s5Error_pSgtctF",
             "moduleName": "TruvideoMedia",
-            "objc_name": "uploadWithPath:completion:",
+            "objc_name": "uploadWithPath:tag:metaData:completion:",
             "declAttributes": [
               "Final",
               "AccessControl",

@@ -10,9 +10,13 @@ import TruvideoSdkMedia
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+@objc public protocol TruvideoMediaUploadDelegate {
+  @objc func uploadProgress(updated progress: Swift.Double)
+}
 @_inheritsConvenienceInitializers @objc final public class TruvideoMedia : ObjectiveC.NSObject {
   @objc public static let shared: TruvideoMedia.TruvideoMedia
-  @objc final public func upload(path: Swift.String, completion: @escaping (_ result: TruvideoMedia.MediaResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc weak final public var delegate: (any TruvideoMedia.TruvideoMediaUploadDelegate)?
+  @objc final public func upload(path: Swift.String, tag: Swift.String, metaData: Swift.String, completion: @escaping (_ result: TruvideoMedia.MediaResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }

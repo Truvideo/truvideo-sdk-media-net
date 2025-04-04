@@ -317,13 +317,21 @@ SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@protocol TruvideoMediaUploadDelegate;
 
 SWIFT_CLASS("_TtC13TruvideoMedia13TruvideoMedia")
 @interface TruvideoMedia : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedia * _Nonnull shared;)
 + (TruvideoMedia * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)uploadWithPath:(NSString * _Nonnull)path completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
+@property (nonatomic, weak) id <TruvideoMediaUploadDelegate> _Nullable delegate;
+- (void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP13TruvideoMedia27TruvideoMediaUploadDelegate_")
+@protocol TruvideoMediaUploadDelegate
+- (void)uploadProgressWithUpdated:(double)progress;
 @end
 
 #endif
@@ -653,13 +661,21 @@ SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@protocol TruvideoMediaUploadDelegate;
 
 SWIFT_CLASS("_TtC13TruvideoMedia13TruvideoMedia")
 @interface TruvideoMedia : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedia * _Nonnull shared;)
 + (TruvideoMedia * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)uploadWithPath:(NSString * _Nonnull)path completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
+@property (nonatomic, weak) id <TruvideoMediaUploadDelegate> _Nullable delegate;
+- (void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_PROTOCOL("_TtP13TruvideoMedia27TruvideoMediaUploadDelegate_")
+@protocol TruvideoMediaUploadDelegate
+- (void)uploadProgressWithUpdated:(double)progress;
 @end
 
 #endif

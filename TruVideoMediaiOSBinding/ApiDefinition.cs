@@ -3,46 +3,62 @@ using System;
 using Foundation;
 using ObjCRuntime;
 
+
 namespace TruvideoMediaiOS {
 
-// @interface MediaResponse : NSObject
-[BaseType (typeof(NSObject), Name = "_TtC13TruvideoMedia13MediaResponse")]
-[DisableDefaultCtor]
-interface MediaResponse
-{
-	// @property (readonly, copy, nonatomic) NSDate * _Nonnull createdDate;
-	[Export ("createdDate", ArgumentSemantic.Copy)]
-	NSDate CreatedDate { get; }
+    // Define the delegate interface (protocol)
+    [BaseType(typeof(NSObject))]
+    [Protocol,Model]
+    interface TruvideoMediaUploadDelegate
+    {
+        // The Swift function is: func uploadProgress(updated progress: Double)
+        [Export("uploadProgressWithUpdated:")] // ✅ Corrected Export
+          void UploadProgress(double updated);
 
-	// @property (readonly, copy, nonatomic) NSString * _Nonnull remoteId;
-	[Export ("remoteId")]
-	string RemoteId { get; }
+    }
 
-	// @property (readonly, nonatomic) float transcriptionLength;
-	[Export ("transcriptionLength")]
-	float TranscriptionLength { get; }
+    // @interface MediaResponse : NSObject
+    [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia13MediaResponse")]
+    [DisableDefaultCtor]
+    interface MediaResponse
+    {
+        // @property (readonly, copy, nonatomic) NSDate * _Nonnull createdDate;
+        [Export("createdDate", ArgumentSemantic.Copy)]
+        NSDate CreatedDate { get; }
 
-	// @property (readonly, copy, nonatomic) NSURL * _Nullable transcriptionURL;
-	[NullAllowed, Export ("transcriptionURL", ArgumentSemantic.Copy)]
-	NSUrl TranscriptionURL { get; }
+        // @property (readonly, copy, nonatomic) NSString * _Nonnull remoteId;
+        [Export("remoteId")]
+        string RemoteId { get; }
 
-	// @property (readonly, copy, nonatomic) NSURL * _Nonnull uploadedFileURL;
-	[Export ("uploadedFileURL", ArgumentSemantic.Copy)]
-	NSUrl UploadedFileURL { get; }
-}
+        // @property (readonly, nonatomic) float transcriptionLength;
+        [Export("transcriptionLength")]
+        float TranscriptionLength { get; }
 
-// @interface TruvideoMedia : NSObject
-[BaseType (typeof(NSObject), Name = "_TtC13TruvideoMedia13TruvideoMedia")]
-[DisableDefaultCtor]
-interface TruvideoMedia
-{
-	// @property (readonly, nonatomic, strong, class) TruvideoMedia * _Nonnull shared;
-	[Static]
-	[Export ("shared", ArgumentSemantic.Strong)]
-	TruvideoMedia Shared { get; }
+        // @property (readonly, copy, nonatomic) NSURL * _Nullable transcriptionURL;
+        [NullAllowed, Export("transcriptionURL", ArgumentSemantic.Copy)]
+        NSUrl TranscriptionURL { get; }
 
-	// -(void)uploadWithPath:(NSString * _Nonnull)path completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
-	[Export ("uploadWithPath:completion:")]
-	void UploadWithPath (string path, Action<MediaResponse, NSError> completion);
-}
+        // @property (readonly, copy, nonatomic) NSURL * _Nonnull uploadedFileURL;
+        [Export("uploadedFileURL", ArgumentSemantic.Copy)]
+        NSUrl UploadedFileURL { get; }
+    }
+
+    // @interface TruvideoMedia : NSObject
+    [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia13TruvideoMedia")]
+    [DisableDefaultCtor]
+    interface TruvideoMedia
+    {
+        // @property (readonly, nonatomic, strong, class) TruvideoMedia * _Nonnull shared;
+        [Static]
+        [Export("shared", ArgumentSemantic.Strong)]
+        TruvideoMedia Shared { get; }
+
+        // Add delegate property
+        [NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
+        TruvideoMediaUploadDelegate Delegate { get; set; }
+
+        // -(void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
+        [Export("uploadWithPath:tag:metaData:completion:")]
+        void UploadWithPath(string path, string tag, string metaData, Action<MediaResponse, NSError> completion);
+    }
 }
