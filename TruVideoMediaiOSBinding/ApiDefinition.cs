@@ -1,5 +1,6 @@
 
 using System;
+using System.Runtime.InteropServices.JavaScript;
 using Foundation;
 using ObjCRuntime;
 
@@ -41,8 +42,18 @@ namespace TruvideoMediaiOS {
         // @property (readonly, copy, nonatomic) NSURL * _Nonnull uploadedFileURL;
         [Export("uploadedFileURL", ArgumentSemantic.Copy)]
         NSUrl UploadedFileURL { get; }
+        
+        [Export("tags")]
+        NSDictionary Tags { get; }
+        
+        [Export("metadata")]
+        NSDictionary Metadata { get; }
+        
+        [Export("type")]
+        NSString Type { get; }
+        
     }
-
+    
     // @interface TruvideoMedia : NSObject
     [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia13TruvideoMedia")]
     [DisableDefaultCtor]
@@ -59,6 +70,9 @@ namespace TruvideoMediaiOS {
 
         // -(void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
         [Export("uploadWithPath:tag:metaData:completion:")]
-        void UploadWithPath(string path, string tag, string metaData, Action<MediaResponse, NSError> completion);
+        void UploadMedia(string path, string tag, string metaData, Action<MediaResponse, NSError> completion);
+        
+        [Export("searchWithType:tags:pageNumber:size:completion:")]
+        void Search(MediaType type, string tags, int pageNumber, int size, Action<NSArray, NSError> completion);
     }
 }

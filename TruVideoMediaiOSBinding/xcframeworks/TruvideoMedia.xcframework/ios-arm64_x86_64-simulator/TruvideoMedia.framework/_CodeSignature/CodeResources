@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/TruvideoMedia-Swift.h</key>
 		<data>
-		YwlIvaIH4/1JcKA2fPOLxkZHekw=
+		l3MPQ66LuPutdnoxxIIG1XbeXDU=
 		</data>
 		<key>Headers/TruvideoMedia.h</key>
 		<data>
@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		FBeszuvCEOGEHRqnggj7UGI5q5Q=
+		TYZ8AfoOTie0+A3T24mckw8+cQo=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		uFjGuFDLGy1wslJpDyHdWvDFFc4=
+		gUxZSJdO0/b+F8m8wnGOF+qnFx8=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		uFjGuFDLGy1wslJpDyHdWvDFFc4=
+		gUxZSJdO0/b+F8m8wnGOF+qnFx8=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		JQdBVskdVQGNqwjHU+E0ZlHn/Vc=
+		N1pH0qZRqWmim2yfOjD+7dnH0eM=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		FBeszuvCEOGEHRqnggj7UGI5q5Q=
+		TYZ8AfoOTie0+A3T24mckw8+cQo=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		UC/+uXHI5RTmx2m+UzWiAQn6Mtk=
+		CliZzn0ITkz36SuVuHqYX1adsgg=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		UC/+uXHI5RTmx2m+UzWiAQn6Mtk=
+		CliZzn0ITkz36SuVuHqYX1adsgg=
 		</data>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		3Z6aoE4jwTY20Wod9MtLotz5F/o=
+		VvWCrA7631FkLj3iOAQqk0Aw4WY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,7 +67,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			w+shu/4X/BpXnZjd5keI8vtWyf4MB8ObsFDHP8Ytx+g=
+			CVqrHBI01DhvZRI5+5oWnO3bKYDQIxdHdexMWAa6ZjA=
 			</data>
 		</dict>
 		<key>Headers/TruvideoMedia.h</key>
@@ -81,14 +81,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oUk8EP5LqcDtFAYlCW7YAky159UjQQ0CsnhfXsaYsvI=
+			FbIJAJkmcFRWqPcIVcBFSdJpw/eZ6hqpafmQoLufEDE=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TALUyfU6cRU2lpQt+0OuCcU/aFuB3oE8bP1tyUs7D7E=
+			Z6gb1sfNhzDoTGcbZzqqaEkjWrFYpQJ+8m/U6iuB8A8=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -102,28 +102,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TALUyfU6cRU2lpQt+0OuCcU/aFuB3oE8bP1tyUs7D7E=
+			Z6gb1sfNhzDoTGcbZzqqaEkjWrFYpQJ+8m/U6iuB8A8=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gGRyU2VmIq9ez8iuroJGv68CjfyhHqW/tvOApbhuPMQ=
+			Yg9axVY6ceCQYHEXAJfXOGny6F02FyiY1NP77FYlmrk=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oUk8EP5LqcDtFAYlCW7YAky159UjQQ0CsnhfXsaYsvI=
+			FbIJAJkmcFRWqPcIVcBFSdJpw/eZ6hqpafmQoLufEDE=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jVDi44Ky9B4a2B3VPPyM69a5Ua1HcnK0FEXULCZxT/M=
+			iLBLlIIjqcWwKhXU7mrk2kFn/2s+onA9P1XfvIDt0gM=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -137,14 +137,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jVDi44Ky9B4a2B3VPPyM69a5Ua1HcnK0FEXULCZxT/M=
+			iLBLlIIjqcWwKhXU7mrk2kFn/2s+onA9P1XfvIDt0gM=
 			</data>
 		</dict>
 		<key>Modules/TruvideoMedia.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			53RoHjya610ZqKZgMGng3jiQrP8H22JQoUco/9LlCzA=
+			XFsjMBL07vRo56OsWJvbAdIut6LC1IWMXC74agYM/hM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

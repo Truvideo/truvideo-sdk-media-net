@@ -17,6 +17,7 @@ import _SwiftConcurrencyShims
   @objc public static let shared: TruvideoMedia.TruvideoMedia
   @objc weak final public var delegate: (any TruvideoMedia.TruvideoMediaUploadDelegate)?
   @objc final public func upload(path: Swift.String, tag: Swift.String, metaData: Swift.String, completion: @escaping (_ result: TruvideoMedia.MediaResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc final public func search(type: TruvideoMedia.MediaType, tags: Swift.String?, pageNumber: Swift.Int, size: Swift.Int, completion: @escaping (_ result: [TruvideoMedia.MediaResponse], _ error: (any Swift.Error)?) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
@@ -26,5 +27,39 @@ import _SwiftConcurrencyShims
   @objc final public let transcriptionLength: Swift.Float
   @objc final public let transcriptionURL: Foundation.URL?
   @objc final public let uploadedFileURL: Foundation.URL
+  @objc final public let tags: Foundation.NSDictionary?
+  @objc final public let metadata: Foundation.NSDictionary?
+  @objc final public let type: Swift.String?
   @objc deinit
 }
+@objc public enum MediaStatus : Swift.Int {
+  case cancelled
+  case completed
+  case error
+  case idle
+  case paused
+  case processing
+  case synchronizing
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum MediaType : Swift.Int {
+  case audio
+  case video
+  case image
+  case document
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension TruvideoMedia.MediaStatus : Swift.Equatable {}
+extension TruvideoMedia.MediaStatus : Swift.Hashable {}
+extension TruvideoMedia.MediaStatus : Swift.RawRepresentable {}
+extension TruvideoMedia.MediaType : Swift.Equatable {}
+extension TruvideoMedia.MediaType : Swift.Hashable {}
+extension TruvideoMedia.MediaType : Swift.RawRepresentable {}

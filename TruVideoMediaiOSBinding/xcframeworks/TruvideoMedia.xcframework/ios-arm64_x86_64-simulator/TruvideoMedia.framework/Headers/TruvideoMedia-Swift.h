@@ -280,6 +280,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import Foundation;
 @import ObjectiveC;
 #endif
 
@@ -305,6 +306,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSDate;
 @class NSString;
 @class NSURL;
+@class NSDictionary;
 
 SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 @interface MediaResponse : NSObject
@@ -313,9 +315,29 @@ SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 @property (nonatomic, readonly) float transcriptionLength;
 @property (nonatomic, readonly, copy) NSURL * _Nullable transcriptionURL;
 @property (nonatomic, readonly, copy) NSURL * _Nonnull uploadedFileURL;
+@property (nonatomic, readonly, strong) NSDictionary * _Nullable tags;
+@property (nonatomic, readonly, strong) NSDictionary * _Nullable metadata;
+@property (nonatomic, readonly, copy) NSString * _Nullable type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM(NSInteger, MediaStatus, open) {
+  MediaStatusCancelled = 0,
+  MediaStatusCompleted = 1,
+  MediaStatusError = 2,
+  MediaStatusIdle = 3,
+  MediaStatusPaused = 4,
+  MediaStatusProcessing = 5,
+  MediaStatusSynchronizing = 6,
+};
+
+typedef SWIFT_ENUM(NSInteger, MediaType, open) {
+  MediaTypeAudio = 0,
+  MediaTypeVideo = 1,
+  MediaTypeImage = 2,
+  MediaTypeDocument = 3,
+};
 
 @protocol TruvideoMediaUploadDelegate;
 
@@ -325,6 +347,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedi
 + (TruvideoMedia * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, weak) id <TruvideoMediaUploadDelegate> _Nullable delegate;
 - (void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
+- (void)searchWithType:(enum MediaType)type tags:(NSString * _Nullable)tags pageNumber:(NSInteger)pageNumber size:(NSInteger)size completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -624,6 +647,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import Foundation;
 @import ObjectiveC;
 #endif
 
@@ -649,6 +673,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSDate;
 @class NSString;
 @class NSURL;
+@class NSDictionary;
 
 SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 @interface MediaResponse : NSObject
@@ -657,9 +682,29 @@ SWIFT_CLASS("_TtC13TruvideoMedia13MediaResponse")
 @property (nonatomic, readonly) float transcriptionLength;
 @property (nonatomic, readonly, copy) NSURL * _Nullable transcriptionURL;
 @property (nonatomic, readonly, copy) NSURL * _Nonnull uploadedFileURL;
+@property (nonatomic, readonly, strong) NSDictionary * _Nullable tags;
+@property (nonatomic, readonly, strong) NSDictionary * _Nullable metadata;
+@property (nonatomic, readonly, copy) NSString * _Nullable type;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM(NSInteger, MediaStatus, open) {
+  MediaStatusCancelled = 0,
+  MediaStatusCompleted = 1,
+  MediaStatusError = 2,
+  MediaStatusIdle = 3,
+  MediaStatusPaused = 4,
+  MediaStatusProcessing = 5,
+  MediaStatusSynchronizing = 6,
+};
+
+typedef SWIFT_ENUM(NSInteger, MediaType, open) {
+  MediaTypeAudio = 0,
+  MediaTypeVideo = 1,
+  MediaTypeImage = 2,
+  MediaTypeDocument = 3,
+};
 
 @protocol TruvideoMediaUploadDelegate;
 
@@ -669,6 +714,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedi
 + (TruvideoMedia * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 @property (nonatomic, weak) id <TruvideoMediaUploadDelegate> _Nullable delegate;
 - (void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
+- (void)searchWithType:(enum MediaType)type tags:(NSString * _Nullable)tags pageNumber:(NSInteger)pageNumber size:(NSInteger)size completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
