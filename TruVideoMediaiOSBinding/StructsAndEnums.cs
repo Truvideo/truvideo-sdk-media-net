@@ -13,6 +13,7 @@ namespace TruvideoMediaiOS {
          document = 3
     }
     
+    [Native]
     public enum MediaStatus : long 
     {
         cancelled = 0,

@@ -278,8 +278,8 @@
           },
           {
             "kind": "Function",
-            "name": "upload",
-            "printedName": "upload(path:tag:metaData:completion:)",
+            "name": "mediaBuilder",
+            "printedName": "mediaBuilder(path:tag:metaData:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -307,7 +307,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(TruvideoMedia.MediaResponse?, (any Swift.Error)?) -> ()",
+                "printedName": "(TruvideoMedia.TruvideoMediaSdkUploadRequest?, (any Swift.Error)?) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -317,18 +317,18 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Tuple",
-                    "printedName": "(TruvideoMedia.MediaResponse?, (any Swift.Error)?)",
+                    "printedName": "(TruvideoMedia.TruvideoMediaSdkUploadRequest?, (any Swift.Error)?)",
                     "children": [
                       {
                         "kind": "TypeNominal",
                         "name": "Optional",
-                        "printedName": "TruvideoMedia.MediaResponse?",
+                        "printedName": "TruvideoMedia.TruvideoMediaSdkUploadRequest?",
                         "children": [
                           {
                             "kind": "TypeNominal",
-                            "name": "MediaResponse",
-                            "printedName": "TruvideoMedia.MediaResponse",
-                            "usr": "c:@M@TruvideoMedia@objc(cs)MediaResponse"
+                            "name": "TruvideoMediaSdkUploadRequest",
+                            "printedName": "TruvideoMedia.TruvideoMediaSdkUploadRequest",
+                            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest"
                           }
                         ],
                         "usr": "s:Sq"
@@ -353,10 +353,162 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)uploadWithPath:tag:metaData:completion:",
-            "mangledName": "$s13TruvideoMediaAAC6upload4path3tag8metaData10completionySS_S2SyAA0B8ResponseCSg_s5Error_pSgtctF",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)mediaBuilderWithPath:tag:metaData:completion:",
+            "mangledName": "$s13TruvideoMediaAAC12mediaBuilder4path3tag8metaData10completionySS_S2SyAA0aB16SdkUploadRequestCSg_s5Error_pSgtctF",
             "moduleName": "TruvideoMedia",
-            "objc_name": "uploadWithPath:tag:metaData:completion:",
+            "objc_name": "mediaBuilderWithPath:tag:metaData:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getById",
+            "printedName": "getById(id:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoMedia.TruvideoMediaSdkUploadRequest?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(TruvideoMedia.TruvideoMediaSdkUploadRequest?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "TruvideoMedia.TruvideoMediaSdkUploadRequest?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "TruvideoMediaSdkUploadRequest",
+                            "printedName": "TruvideoMedia.TruvideoMediaSdkUploadRequest",
+                            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)getByIdWithId:completion:",
+            "mangledName": "$s13TruvideoMediaAAC7getById2id10completionySS_yAA0aB16SdkUploadRequestCSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "getByIdWithId:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getFileUploadRequests",
+            "printedName": "getFileUploadRequests(byStatus:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MediaStatus",
+                "printedName": "TruvideoMedia.MediaStatus",
+                "usr": "c:@M@TruvideoMedia@E@MediaStatus"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([TruvideoMedia.TruvideoMediaSdkUploadRequest], (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "([TruvideoMedia.TruvideoMediaSdkUploadRequest], (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[TruvideoMedia.TruvideoMediaSdkUploadRequest]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "TruvideoMediaSdkUploadRequest",
+                            "printedName": "TruvideoMedia.TruvideoMediaSdkUploadRequest",
+                            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)getFileUploadRequestsByStatus:completion:",
+            "mangledName": "$s13TruvideoMediaAAC21getFileUploadRequests8byStatus10completionyAA0bH0O_ySayAA0ab3SdkE7RequestCG_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "getFileUploadRequestsByStatus:completion:",
             "declAttributes": [
               "Final",
               "AccessControl",
@@ -459,6 +611,490 @@
             "mangledName": "$s13TruvideoMediaAAC6search4type4tags10pageNumber4size10completionyAA0B4TypeO_SSSgS2iySayAA0B8ResponseCG_s5Error_pSgtctF",
             "moduleName": "TruvideoMedia",
             "objc_name": "searchWithType:tags:pageNumber:size:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "uploadRequest",
+            "printedName": "uploadRequest(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoMedia.MediaResponse?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(TruvideoMedia.MediaResponse?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "TruvideoMedia.MediaResponse?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "MediaResponse",
+                            "printedName": "TruvideoMedia.MediaResponse",
+                            "usr": "c:@M@TruvideoMedia@objc(cs)MediaResponse"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)uploadRequest:completion:",
+            "mangledName": "$s13TruvideoMediaAAC13uploadRequest_10completiony10Foundation4UUIDV_yAA0B8ResponseCSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "retryRequest",
+            "printedName": "retryRequest(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)retryRequest:completion:",
+            "mangledName": "$s13TruvideoMediaAAC12retryRequest_10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "pauseRequest",
+            "printedName": "pauseRequest(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)pauseRequest:completion:",
+            "mangledName": "$s13TruvideoMediaAAC12pauseRequest_10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "resumeRequest",
+            "printedName": "resumeRequest(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)resumeRequest:completion:",
+            "mangledName": "$s13TruvideoMediaAAC13resumeRequest_10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "deleteRequest",
+            "printedName": "deleteRequest(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)deleteRequest:completion:",
+            "mangledName": "$s13TruvideoMediaAAC13deleteRequest_10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "cancelRequest",
+            "printedName": "cancelRequest(_:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)cancelRequest:completion:",
+            "mangledName": "$s13TruvideoMediaAAC13cancelRequest_10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "updateIncludeInReportForRequest",
+            "printedName": "updateIncludeInReportForRequest(_:includeInReport:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)updateIncludeInReportForRequest:includeInReport:",
+            "mangledName": "$s13TruvideoMediaAAC31updateIncludeInReportForRequest_07includeeF0y10Foundation4UUIDV_SbtF",
+            "moduleName": "TruvideoMedia",
             "declAttributes": [
               "Final",
               "AccessControl",
@@ -1878,73 +2514,1634 @@
             "mangledName": "$sSY"
           }
         ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "TruvideoMediaSdkUploadRequest",
+        "printedName": "TruvideoMediaSdkUploadRequest",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NSUUID",
+                "printedName": "Foundation.NSUUID",
+                "usr": "c:objc(cs)NSUUID"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)id",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC2idSo6NSUUIDCvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSUUID",
+                    "printedName": "Foundation.NSUUID",
+                    "usr": "c:objc(cs)NSUUID"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)id",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC2idSo6NSUUIDCvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "filePath",
+            "printedName": "filePath",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)filePath",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8filePathSSvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)filePath",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8filePathSSvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "errorMessage",
+            "printedName": "errorMessage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)errorMessage",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC12errorMessageSSSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)errorMessage",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC12errorMessageSSSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "remoteId",
+            "printedName": "remoteId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)remoteId",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8remoteIdSSSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)remoteId",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8remoteIdSSSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "remoteURL",
+            "printedName": "remoteURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)remoteURL",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC9remoteURL10Foundation0G0VSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)remoteURL",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC9remoteURL10Foundation0G0VSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "uploadProgress",
+            "printedName": "uploadProgress",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)uploadProgress",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC14uploadProgressSdvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)uploadProgress",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC14uploadProgressSdvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "transcriptionURL",
+            "printedName": "transcriptionURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)transcriptionURL",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC16transcriptionURLSSSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)transcriptionURL",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC16transcriptionURLSSSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "transcriptionLength",
+            "printedName": "transcriptionLength",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)transcriptionLength",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC19transcriptionLengthSo8NSNumberCSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSNumber?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSNumber",
+                        "printedName": "Foundation.NSNumber",
+                        "usr": "c:objc(cs)NSNumber"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)transcriptionLength",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC19transcriptionLengthSo8NSNumberCSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "metadata",
+            "printedName": "metadata",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSDictionary?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)metadata",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8metadataSo12NSDictionaryCSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSDictionary?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSDictionary",
+                        "printedName": "Foundation.NSDictionary",
+                        "usr": "c:objc(cs)NSDictionary"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)metadata",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8metadataSo12NSDictionaryCSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "tags",
+            "printedName": "tags",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSDictionary?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)tags",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC4tagsSo12NSDictionaryCSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.NSDictionary?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NSDictionary",
+                        "printedName": "Foundation.NSDictionary",
+                        "usr": "c:objc(cs)NSDictionary"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)tags",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC4tagsSo12NSDictionaryCSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "status",
+            "printedName": "status",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MediaStatus",
+                "printedName": "TruvideoMedia.MediaStatus",
+                "usr": "c:@M@TruvideoMedia@E@MediaStatus"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)status",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC6statusAA0B6StatusOvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MediaStatus",
+                    "printedName": "TruvideoMedia.MediaStatus",
+                    "usr": "c:@M@TruvideoMedia@E@MediaStatus"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)status",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC6statusAA0B6StatusOvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "createdAt",
+            "printedName": "createdAt",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)createdAt",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC9createdAt10Foundation4DateVSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)createdAt",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC9createdAt10Foundation4DateVSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "updatedAt",
+            "printedName": "updatedAt",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)updatedAt",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC9updatedAt10Foundation4DateVSgvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.Date?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Date",
+                        "printedName": "Foundation.Date",
+                        "usr": "s:10Foundation4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)updatedAt",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC9updatedAt10Foundation4DateVSgvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "includeInReport",
+            "printedName": "includeInReport",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)includeInReport",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC15includeInReportSbvp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)includeInReport",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC15includeInReportSbvg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileType",
+            "printedName": "fileType",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MediaType",
+                "printedName": "TruvideoMedia.MediaType",
+                "usr": "c:@M@TruvideoMedia@E@MediaType"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)fileType",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8fileTypeAA0bG0Ovp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MediaType",
+                    "printedName": "TruvideoMedia.MediaType",
+                    "usr": "c:@M@TruvideoMedia@E@MediaType"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)fileType",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC8fileTypeAA0bG0Ovg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "durationMilliseconds",
+            "printedName": "durationMilliseconds",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(py)durationMilliseconds",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC20durationMillisecondsSivp",
+            "moduleName": "TruvideoMedia",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)durationMilliseconds",
+                "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC20durationMillisecondsSivg",
+                "moduleName": "TruvideoMedia",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "upload",
+            "printedName": "upload(requestId:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoMedia.MediaResponse?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(TruvideoMedia.MediaResponse?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "TruvideoMedia.MediaResponse?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "MediaResponse",
+                            "printedName": "TruvideoMedia.MediaResponse",
+                            "usr": "c:@M@TruvideoMedia@objc(cs)MediaResponse"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)uploadWithRequestId:completion:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC6upload9requestId10completiony10Foundation4UUIDV_yAA0B8ResponseCSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "uploadWithRequestId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "retry",
+            "printedName": "retry(requestId:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)retryWithRequestId:completion:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC5retry9requestId10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "retryWithRequestId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "pause",
+            "printedName": "pause(requestId:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)pauseWithRequestId:completion:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC5pause9requestId10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "pauseWithRequestId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "resume",
+            "printedName": "resume(requestId:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)resumeWithRequestId:completion:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC6resume9requestId10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "resumeWithRequestId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "delete",
+            "printedName": "delete(requestId:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)deleteWithRequestId:completion:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC6delete9requestId10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "deleteWithRequestId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "cancel",
+            "printedName": "cancel(requestId:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String?, (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(Swift.String?, (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)cancelWithRequestId:completion:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC6cancel9requestId10completiony10Foundation4UUIDV_ySSSg_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "cancelWithRequestId:completion:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "updateIncludeInReport",
+            "printedName": "updateIncludeInReport(requestId:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UUID",
+                "printedName": "Foundation.UUID",
+                "usr": "s:10Foundation4UUIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)updateIncludeInReportWithRequestId::error:",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC21updateIncludeInReport9requestId_y10Foundation4UUIDV_SbtKF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "updateIncludeInReportWithRequestId::error:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TruvideoMediaSdkUploadRequest",
+                "printedName": "TruvideoMedia.TruvideoMediaSdkUploadRequest",
+                "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest(im)init",
+            "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestCACycfc",
+            "moduleName": "TruvideoMedia",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMediaSdkUploadRequest",
+        "mangledName": "$s13TruvideoMedia0aB16SdkUploadRequestC",
+        "moduleName": "TruvideoMedia",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
       }
     ],
     "json_format_version": 8
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7368,
+      "offset": 14857,
       "length": 9,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7387,
+      "offset": 14876,
       "length": 5,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7402,
+      "offset": 14891,
       "length": 4,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7416,
+      "offset": 14905,
       "length": 6,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7432,
+      "offset": 14921,
       "length": 10,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7452,
+      "offset": 14941,
       "length": 13,
       "value": "6"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7528,
+      "offset": 15017,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7543,
+      "offset": 15032,
       "length": 5,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Desktop\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 7558,
+      "offset": 15047,
       "length": 8,
       "value": "3"
+    },
+    {
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "kind": "FloatLiteral",
+      "offset": 15323,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "kind": "BooleanLiteral",
+      "offset": 15614,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "kind": "IntegerLiteral",
+      "offset": 15686,
+      "length": 1,
+      "value": "0"
     }
   ]
 }
