@@ -4060,86 +4060,86 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 14857,
+      "offset": 14856,
       "length": 9,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 14876,
+      "offset": 14875,
       "length": 5,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 14891,
+      "offset": 14890,
       "length": 4,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 14905,
+      "offset": 14904,
       "length": 6,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 14921,
+      "offset": 14920,
       "length": 10,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 14941,
+      "offset": 14940,
       "length": 13,
       "value": "6"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 15017,
+      "offset": 15016,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 15032,
+      "offset": 15031,
       "length": 5,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 15047,
+      "offset": 15046,
       "length": 8,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "FloatLiteral",
-      "offset": 15323,
+      "offset": 15322,
       "length": 3,
       "value": "0.0"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "BooleanLiteral",
-      "offset": 15614,
+      "offset": 15613,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/apple\/Downloads\/TruVideoSampleIOSApp 4\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 15686,
+      "offset": 15685,
       "length": 1,
       "value": "0"
     }

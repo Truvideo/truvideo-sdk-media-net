@@ -44,24 +44,24 @@ public let TruvideoSdkMedia: any TruvideoSdkMedia.TruvideoSdkMediaInterface
 public protocol TruvideoSdkMediaInterface {
   typealias TruvideoSdkMediaFileUploadStreams = Combine.AnyPublisher<[TruvideoSdkMedia.TruvideoSdkMediaUploadRequest], Swift.Never>
   typealias TruvideoSdkMediaFileUploadStream = Combine.AnyPublisher<TruvideoSdkMedia.TruvideoSdkMediaUploadRequest, Swift.Never>
-  func FileUploadRequestBuilder(fileURL: Foundation.URL, metadata: TruvideoSdkMedia.TruvideoSdkMediaMetadata, tags: TruvideoSdkMedia.TruvideoSdkMediaTags, includeInReport: Swift.Bool?) -> TruvideoSdkMedia.FileUploadRequestBuilder
+  func FileUploadRequestBuilder(fileURL: Foundation.URL, metadata: TruvideoSdkMedia.TruvideoSdkMediaMetadata, tags: TruvideoSdkMedia.TruvideoSdkMediaTags, includeInReport: Swift.Bool?, isLibrary: Swift.Bool?) -> TruvideoSdkMedia.FileUploadRequestBuilder
   #if compiler(>=5.3) && $AsyncAwait
   func getById(_ id: Swift.String) async throws -> TruvideoSdkMedia.TruvideoSDKMedia?
   #endif
   func getFileUploadRequests(byStatus status: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest.Status?) throws -> [TruvideoSdkMedia.TruvideoSdkMediaUploadRequest]
   func getFileUploadRequest(withId id: Swift.String) throws -> TruvideoSdkMedia.TruvideoSdkMediaUploadRequest
   #if compiler(>=5.3) && $AsyncAwait
-  func search(type: TruvideoSdkMedia.TruvideoSdkMediaType?, tags: TruvideoSdkMedia.TruvideoSdkMediaTags?, pageNumber: Swift.Int, size: Swift.Int) async throws -> TruvideoSdkMedia.TruvideoSdkMediaPaginatedResponse<TruvideoSdkMedia.TruvideoSDKMedia>
+  func search(type: TruvideoSdkMedia.TruvideoSdkMediaType?, tags: TruvideoSdkMedia.TruvideoSdkMediaTags?, isLibrary: Swift.Bool, pageNumber: Swift.Int, size: Swift.Int) async throws -> TruvideoSdkMedia.TruvideoSdkMediaPaginatedResponse<TruvideoSdkMedia.TruvideoSDKMedia>
   #endif
   func streamFileUploadRequests(byStatus status: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest.Status?) -> Self.TruvideoSdkMediaFileUploadStreams
   func streamFileUploadRequest(withId id: Swift.String) throws -> Self.TruvideoSdkMediaFileUploadStream
 }
 extension TruvideoSdkMedia.TruvideoSdkMediaInterface {
-  public func FileUploadRequestBuilder(fileURL: Foundation.URL, metadata: TruvideoSdkMedia.TruvideoSdkMediaMetadata = TruvideoSdkMediaMetadata.builder().build(), tags: TruvideoSdkMedia.TruvideoSdkMediaTags = TruvideoSdkMediaTags.builder().build(), includeInReport: Swift.Bool? = nil) -> TruvideoSdkMedia.FileUploadRequestBuilder
+  public func FileUploadRequestBuilder(fileURL: Foundation.URL, metadata: TruvideoSdkMedia.TruvideoSdkMediaMetadata = TruvideoSdkMediaMetadata.builder().build(), tags: TruvideoSdkMedia.TruvideoSdkMediaTags = TruvideoSdkMediaTags.builder().build(), includeInReport: Swift.Bool? = nil, isLibrary: Swift.Bool? = nil) -> TruvideoSdkMedia.FileUploadRequestBuilder
   public func getFileUploadRequests(byStatus status: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest.Status? = nil) throws -> [TruvideoSdkMedia.TruvideoSdkMediaUploadRequest]
   public func streamFileUploadRequests(byStatus status: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest.Status? = nil) -> Self.TruvideoSdkMediaFileUploadStreams
   #if compiler(>=5.3) && $AsyncAwait
-  public func search(type: TruvideoSdkMedia.TruvideoSdkMediaType? = nil, tags: TruvideoSdkMedia.TruvideoSdkMediaTags? = nil, pageNumber: Swift.Int = 0, size: Swift.Int = 20) async throws -> TruvideoSdkMedia.TruvideoSdkMediaPaginatedResponse<TruvideoSdkMedia.TruvideoSDKMedia>
+  public func search(type: TruvideoSdkMedia.TruvideoSdkMediaType? = nil, tags: TruvideoSdkMedia.TruvideoSdkMediaTags? = nil, isLibrary: Swift.Bool = false, pageNumber: Swift.Int = 0, size: Swift.Int = 20) async throws -> TruvideoSdkMedia.TruvideoSdkMediaPaginatedResponse<TruvideoSdkMedia.TruvideoSDKMedia>
   #endif
 }
 public enum TruvideoSdkMediaError : Swift.Equatable, Swift.Error, Foundation.LocalizedError {
@@ -114,7 +114,7 @@ public struct TruvideoSdkMediaFileUploadProgress {
   final public let remoteURL: Foundation.URL?
   final public let uploadProgress: Swift.Double
   final public let transcriptionURL: Swift.String?
-  final public var transcriptionLenght: Swift.Float?
+  final public var transcriptionLength: Swift.Float?
   final public let metadata: TruvideoSdkMedia.TruvideoSdkMediaMetadata
   final public let tags: TruvideoSdkMedia.TruvideoSdkMediaTags
   final public let status: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest.Status
@@ -127,6 +127,7 @@ public struct TruvideoSdkMediaFileUploadProgress {
   final public var durationMilliseconds: Swift.Int? {
     get
   }
+  final public var isLibrary: Swift.Bool?
   final public func upload() throws
   final public func retry() throws
   final public func pause() throws
@@ -134,6 +135,7 @@ public struct TruvideoSdkMediaFileUploadProgress {
   final public func delete() throws
   final public func cancel() throws
   final public func updateIncludeInReport(_ includeInReport: Swift.Bool)
+  final public func updateIsLibrary(_ isLibrary: Swift.Bool)
   public static func == (lhs: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest, rhs: TruvideoSdkMedia.TruvideoSdkMediaUploadRequest) -> Swift.Bool
   @objc deinit
 }
@@ -141,12 +143,16 @@ public typealias TruvideoSdkMediaFileUploadResult = TruvideoSdkMedia.TruvideoSDK
 public struct TruvideoSDKMedia : Swift.Equatable {
   public let createdDate: Foundation.Date
   public let metadata: TruvideoSdkMedia.TruvideoSdkMediaMetadata
+  public let previewUrl: Foundation.URL?
   public let remoteId: Swift.String
   public let tags: TruvideoSdkMedia.TruvideoSdkMediaTags
+  public let thumbnailUrl: Foundation.URL?
   public let transcriptionLength: Swift.Float
   public let transcriptionURL: Foundation.URL?
   public let type: TruvideoSdkMedia.TruvideoSdkMediaType
   public let uploadedFileURL: Foundation.URL
+  public let includeInReport: Swift.Bool
+  public let isLibrary: Swift.Bool
   public static func == (a: TruvideoSdkMedia.TruvideoSDKMedia, b: TruvideoSdkMedia.TruvideoSDKMedia) -> Swift.Bool
 }
 public struct TruvideoSdkMediaPaginatedResponse<Content> : Swift.Equatable where Content : Swift.Equatable {

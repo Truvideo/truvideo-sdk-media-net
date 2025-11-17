@@ -54,7 +54,7 @@ final public class TruvideoMedia: NSObject {
                 remoteURL: fileUploadRequest.remoteURL,
                 uploadProgress: fileUploadRequest.uploadProgress,
                 transcriptionURL: fileUploadRequest.transcriptionURL,
-                transcriptionLenght: fileUploadRequest.transcriptionLenght as NSNumber?,
+                transcriptionLenght: fileUploadRequest.transcriptionLength as NSNumber?,
                 metadata: fileUploadRequest.metadata.dictionary as? NSDictionary,
                 tags:fileUploadRequest.tags.dictionary as? NSDictionary,
                 status: convertTruvideoStatusToMediaStatus(fileUploadRequest.status),
@@ -116,7 +116,7 @@ final public class TruvideoMedia: NSObject {
                     remoteURL: fileUploadRequest.remoteURL,
                     uploadProgress: fileUploadRequest.uploadProgress,
                     transcriptionURL: fileUploadRequest.transcriptionURL,
-                    transcriptionLenght: fileUploadRequest.transcriptionLenght as NSNumber?,
+                    transcriptionLenght: fileUploadRequest.transcriptionLength as NSNumber?,
                     metadata: fileUploadRequest.metadata.dictionary as? NSDictionary,
                     tags:fileUploadRequest.tags.dictionary as? NSDictionary,
                     status: convertTruvideoStatusToMediaStatus(fileUploadRequest.status),
@@ -153,7 +153,7 @@ final public class TruvideoMedia: NSObject {
                         remoteURL: sdkRequest.remoteURL,
                         uploadProgress: sdkRequest.uploadProgress,
                         transcriptionURL: sdkRequest.transcriptionURL,
-                        transcriptionLenght: sdkRequest.transcriptionLenght as? NSNumber,
+                        transcriptionLenght: sdkRequest.transcriptionLength as? NSNumber,
                         metadata: sdkRequest.metadata.dictionary as? NSDictionary,
                         tags: sdkRequest.tags.dictionary as? NSDictionary,
                         status: convertTruvideoStatusToMediaStatus(sdkRequest.status),
@@ -239,7 +239,7 @@ final public class TruvideoMedia: NSObject {
             .sink(receiveCompletion: { receiveCompletion in
                 switch receiveCompletion {
                 case .finished:
-                    print("Upload finished",)
+                    print("Upload finished")
                 case .failure(let error):
                     print("Upload failed:", error)
                     completion(nil,error)
@@ -496,7 +496,7 @@ extension TruvideoSdkMediaUploadRequest {
             remoteURL: remoteURL,
             uploadProgress: uploadProgress,
             transcriptionURL: transcriptionURL,
-            transcriptionLenght: transcriptionLenght as NSNumber?,
+            transcriptionLenght: transcriptionLength as NSNumber?,
             metadata: metadata.dictionary as? NSDictionary,
             tags: tags.dictionary as? NSDictionary,
             status: convertTruvideoStatusToMediaStatus(status),
