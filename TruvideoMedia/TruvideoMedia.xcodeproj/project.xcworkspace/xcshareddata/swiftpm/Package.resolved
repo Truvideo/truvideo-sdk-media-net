@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Truvideo/truvideo-sdk-ios-media",
       "state" : {
-        "revision" : "426b38135974104cff377bb48e210047bbf7f06c",
-        "version" : "78.1.2"
+        "revision" : "9cde97b5c575cd2ee0b6eaa7c9f9bacf244a3a72",
+        "version" : "78.1.5"
       }
     }
   ],

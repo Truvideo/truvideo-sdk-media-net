@@ -124,9 +124,11 @@ public struct TruvideoSdkMediaFileUploadProgress {
   final public var fileType: TruvideoSdkMedia.TruvideoSdkMediaType {
     get
   }
+  #if compiler(>=5.3) && $EffectfulProp
   final public var durationMilliseconds: Swift.Int? {
-    get
+    get async
   }
+  #endif
   final public var isLibrary: Swift.Bool?
   final public func upload() throws
   final public func retry() throws

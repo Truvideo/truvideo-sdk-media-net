@@ -26,7 +26,7 @@ final public class TruvideoMedia: NSObject {
         tag: String,
         metaData: String,
         completion: @escaping (_ request: TruvideoMediaSdkUploadRequest?, _ error: Error?) -> Void
-    ) {
+    ) async {
         do {
             guard let url = URL(string: path) else { return }
             
@@ -46,7 +46,7 @@ final public class TruvideoMedia: NSObject {
             self.requestMapping[fileUploadRequest.id] = fileUploadRequest
             
             // Wrap into your request object
-            let wrappedRequest = TruvideoMediaSdkUploadRequest(
+            let wrappedRequest = await TruvideoMediaSdkUploadRequest(
                 id: fileUploadRequest.id as NSUUID, // ensure this exists on SDK side
                 filePath: fileUploadRequest.filePath,
                 errorMessage: fileUploadRequest.errorMessage,
@@ -108,7 +108,7 @@ final public class TruvideoMedia: NSObject {
         Task{
             do {
                 let fileUploadRequest = try TruvideoSdkMedia.getFileUploadRequest(withId : id)
-                let wrappedRequest = TruvideoMediaSdkUploadRequest(
+                let wrappedRequest = await TruvideoMediaSdkUploadRequest(
                     id: fileUploadRequest.id as NSUUID, // ensure this exists on SDK side
                     filePath: fileUploadRequest.filePath,
                     errorMessage: fileUploadRequest.errorMessage,
@@ -134,6 +134,45 @@ final public class TruvideoMedia: NSObject {
         }
     }
         
+//    @objc public func getFileUploadRequests(
+//        byStatus: MediaStatus,
+//        completion: @escaping (_ result: [TruvideoMediaSdkUploadRequest], _ error: Error?) -> Void
+//    ) {
+//        Task {
+//            do {
+//                let status = convertMediaStatusToTruvideoStatus(byStatus)
+//                let sdkRequests = try TruvideoSdkMedia.getFileUploadRequests(byStatus: status)
+//                
+//                // Map each SDK request to your wrapper
+//                let wrappedRequests = sdkRequests.map { sdkRequest in
+//                    TruvideoMediaSdkUploadRequest(
+//                        id: sdkRequest.id as NSUUID,
+//                        filePath: sdkRequest.filePath,
+//                        errorMessage: sdkRequest.errorMessage,
+//                        remoteId: sdkRequest.remoteId,
+//                        remoteURL: sdkRequest.remoteURL,
+//                        uploadProgress: sdkRequest.uploadProgress,
+//                        transcriptionURL: sdkRequest.transcriptionURL,
+//                        transcriptionLenght: sdkRequest.transcriptionLength as? NSNumber,
+//                        metadata: sdkRequest.metadata.dictionary as? NSDictionary,
+//                        tags: sdkRequest.tags.dictionary as? NSDictionary,
+//                        status: convertTruvideoStatusToMediaStatus(sdkRequest.status),
+//                        createdAt: sdkRequest.createdAt,
+//                        updatedAt: sdkRequest.updatedAt,
+//                        includeInReport: sdkRequest.includeInReport ?? false,
+//                        fileType: convertTruvideoTypeToMediaType(sdkRequest.fileType),
+//                        durationMilliseconds: sdkRequest.durationMilliseconds ?? 0
+//                    )
+//                }
+//                
+//                completion(wrappedRequests, nil)
+//            } catch {
+//                completion([], error)
+//            }
+//        }
+//    }
+    
+    
     @objc public func getFileUploadRequests(
         byStatus: MediaStatus,
         completion: @escaping (_ result: [TruvideoMediaSdkUploadRequest], _ error: Error?) -> Void
@@ -142,10 +181,14 @@ final public class TruvideoMedia: NSObject {
             do {
                 let status = convertMediaStatusToTruvideoStatus(byStatus)
                 let sdkRequests = try TruvideoSdkMedia.getFileUploadRequests(byStatus: status)
-                
-                // Map each SDK request to your wrapper
-                let wrappedRequests = sdkRequests.map { sdkRequest in
-                    TruvideoMediaSdkUploadRequest(
+
+                var wrappedRequests: [TruvideoMediaSdkUploadRequest] = []
+                wrappedRequests.reserveCapacity(sdkRequests.count)
+
+                for sdkRequest in sdkRequests {
+                    let duration = await sdkRequest.durationMilliseconds ?? 0
+
+                    let wrapped = TruvideoMediaSdkUploadRequest(
                         id: sdkRequest.id as NSUUID,
                         filePath: sdkRequest.filePath,
                         errorMessage: sdkRequest.errorMessage,
@@ -161,16 +204,22 @@ final public class TruvideoMedia: NSObject {
                         updatedAt: sdkRequest.updatedAt,
                         includeInReport: sdkRequest.includeInReport ?? false,
                         fileType: convertTruvideoTypeToMediaType(sdkRequest.fileType),
-                        durationMilliseconds: sdkRequest.durationMilliseconds ?? 0
+                        durationMilliseconds: duration
                     )
+
+                    wrappedRequests.append(wrapped)
                 }
-                
+
                 completion(wrappedRequests, nil)
             } catch {
                 completion([], error)
             }
         }
     }
+
+    
+    
+    
     
     @objc public func search(type: MediaType, tags: String?, pageNumber: Int, size: Int, completion: @escaping (_ result: [MediaResponse], _ error: Error?) -> Void) {
         Task {
@@ -487,25 +536,48 @@ public class TruvideoMediaSdkUploadRequest: NSObject{
 
 extension TruvideoSdkMediaUploadRequest {
     
-    var mediaRequest: TruvideoMediaSdkUploadRequest {
-        TruvideoMediaSdkUploadRequest(
-            id: id as NSUUID, // ensure this exists on SDK side
-            filePath: filePath,
-            errorMessage: errorMessage,
-            remoteId: remoteId,
-            remoteURL: remoteURL,
-            uploadProgress: uploadProgress,
-            transcriptionURL: transcriptionURL,
-            transcriptionLenght: transcriptionLength as NSNumber?,
-            metadata: metadata.dictionary as? NSDictionary,
-            tags: tags.dictionary as? NSDictionary,
-            status: convertTruvideoStatusToMediaStatus(status),
-            createdAt: createdAt,
-            updatedAt: updatedAt,
-            includeInReport: includeInReport ?? false,
-            fileType: convertTruvideoTypeToMediaType(fileType),
-            durationMilliseconds: durationMilliseconds ?? 0)
-    }
+//    var mediaRequest: TruvideoMediaSdkUploadRequest {
+//        TruvideoMediaSdkUploadRequest(
+//            id: id as NSUUID, // ensure this exists on SDK side
+//            filePath: filePath,
+//            errorMessage: errorMessage,
+//            remoteId: remoteId,
+//            remoteURL: remoteURL,
+//            uploadProgress: uploadProgress,
+//            transcriptionURL: transcriptionURL,
+//            transcriptionLenght: transcriptionLength as NSNumber?,
+//            metadata: metadata.dictionary as? NSDictionary,
+//            tags: tags.dictionary as? NSDictionary,
+//            status: convertTruvideoStatusToMediaStatus(status),
+//            createdAt: createdAt,
+//            updatedAt: updatedAt,
+//            includeInReport: includeInReport ?? false,
+//            fileType: convertTruvideoTypeToMediaType(fileType),
+//            durationMilliseconds: durationMilliseconds ?? 0)
+//    }
+    
+    func makeMediaRequest() async -> TruvideoMediaSdkUploadRequest {
+            let duration = await durationMilliseconds ?? 0
+
+            return TruvideoMediaSdkUploadRequest(
+                id: id as NSUUID,
+                filePath: filePath,
+                errorMessage: errorMessage,
+                remoteId: remoteId,
+                remoteURL: remoteURL,
+                uploadProgress: uploadProgress,
+                transcriptionURL: transcriptionURL,
+                transcriptionLenght: transcriptionLength as NSNumber?,
+                metadata: metadata.dictionary as? NSDictionary,
+                tags: tags.dictionary as? NSDictionary,
+                status: convertTruvideoStatusToMediaStatus(status),
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                includeInReport: includeInReport ?? false,
+                fileType: convertTruvideoTypeToMediaType(fileType),
+                durationMilliseconds: duration
+            )
+        }
     
     private func convertTruvideoStatusToMediaStatus(_ status: TruvideoSdkMediaUploadRequest.Status) -> MediaStatus {
         switch status {

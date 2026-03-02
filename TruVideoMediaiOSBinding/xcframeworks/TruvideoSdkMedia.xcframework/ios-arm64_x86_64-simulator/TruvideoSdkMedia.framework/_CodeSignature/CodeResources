@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		J+7YG2h8DU8Ascfx52D9OzsOVeM=
+		oSbkYLkU6QG2LzHn+9RLYzzhsuU=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		q1l93w2qe0W5Ms7s4jCPt8lmUa4=
+		kW5kXY3wOBZ9LkIkqcNKSZcQGaU=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -30,19 +30,19 @@
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		q1l93w2qe0W5Ms7s4jCPt8lmUa4=
+		kW5kXY3wOBZ9LkIkqcNKSZcQGaU=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		uJ2RXZ3Wj57NLMykYp4yxly7mWY=
+		E8a6qiXxADarqJBQJSmmF40G9vs=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		J+7YG2h8DU8Ascfx52D9OzsOVeM=
+		oSbkYLkU6QG2LzHn+9RLYzzhsuU=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		L73qe1ttL+SR8Kj12Lj80tGpYT0=
+		c/G8+fmpcltGc5yPmCnm/iNxaDw=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		L73qe1ttL+SR8Kj12Lj80tGpYT0=
+		c/G8+fmpcltGc5yPmCnm/iNxaDw=
 		</data>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		cD0hVEN7VLm7f/bDfZVwpyk81Ds=
+		0eUODj6/VZLXxMD+iX5+b3KybZQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,7 +90,7 @@
 		</data>
 		<key>version.properties</key>
 		<data>
-		uYGQXIzupldEtb+aOpeFSgVyKY4=
+		Vi1z1HvXFAcbKzrG9uzkeLVXqLk=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -113,14 +113,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			67qo99gDwUP5nGZvHvqv/2aaM6srccHNNlt+YIYSWFY=
+			UHtSM7zOiG+u4PV5oJBZkda6qumHyDbsCJyiE+jmO2A=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0Wzq5XE3tsH9ZFO80svnZGF4mvfUlo7boR6n1VQIo4M=
+			0iiDTukpntxJSfKX6morvj+I/CsjtxnNlkFHeK8e7sc=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -134,28 +134,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0Wzq5XE3tsH9ZFO80svnZGF4mvfUlo7boR6n1VQIo4M=
+			0iiDTukpntxJSfKX6morvj+I/CsjtxnNlkFHeK8e7sc=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LU8ulRCce9iuLnPtuURSsZ65DRC0EoY3MhfMyMwTzUQ=
+			rUr52+EYpbnSErnf3ugIF/aA4B6aCG66raJOJGFEQmI=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			67qo99gDwUP5nGZvHvqv/2aaM6srccHNNlt+YIYSWFY=
+			UHtSM7zOiG+u4PV5oJBZkda6qumHyDbsCJyiE+jmO2A=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ITHlO3OmMUW5QwDRCT0m+6ya0G/u1IAHbyvCKX0xXKw=
+			gAomBzM4eMXzc1pQJrDRtrWC7dnk6mxpSl2jGUh6uSk=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -169,14 +169,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ITHlO3OmMUW5QwDRCT0m+6ya0G/u1IAHbyvCKX0xXKw=
+			gAomBzM4eMXzc1pQJrDRtrWC7dnk6mxpSl2jGUh6uSk=
 			</data>
 		</dict>
 		<key>Modules/TruvideoSdkMedia.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xYmAqOmVb7GguTPQDXBT3AnIA1U3cnSw784mMLMkVHE=
+			LDOhxKkwRHevtZ+lIKgWnht7GHs9R26bQcxnpGXFS0k=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -239,7 +239,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KmjoOeMlY2rgOTmAvHKuWUKe1NB3pfkhabLozmEEuCg=
+			HCCqqgYwTNPqWj6ZahQKOpmA8ocFRtyuhtgA4MvlCkg=
 			</data>
 		</dict>
 	</dict>
