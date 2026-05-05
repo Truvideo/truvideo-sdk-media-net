@@ -40,6 +40,48 @@ namespace TruvideoMediaiOS
         [NullAllowed, Export("type")]
         NSString Type { get; }
     }
+    
+    
+    
+    // =========================
+    // Stream Response (NEW)
+    // =========================
+    [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia27StreamUploadRequestResponse")]
+    interface StreamUploadRequestResponse
+    {
+        [Export("id")]
+        string Id { get; }
+
+        [Export("status")]
+        string Status { get; }
+
+        [Export("type")]
+        string Type { get; }
+
+        [Export("mediaId")]
+        string MediaId { get; }
+
+        [NullAllowed, Export("tags")]
+        NSDictionary Tags { get; }
+
+        [NullAllowed, Export("metadata")]
+        NSDictionary Metadata { get; }
+
+        [Export("includeInReport")]
+        bool IncludeInReport { get; }
+
+        [Export("isLibrary")]
+        bool IsLibrary { get; }
+
+        [NullAllowed, Export("parts")]
+        NSArray Parts { get; }
+
+        [Export("createdAt")]
+        string CreatedAt { get; }
+        
+        [Export("fileURL")]
+        string FileURL { get; }
+    }
 
     [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia13TruvideoMedia")]
     interface TruvideoMedia
@@ -84,6 +126,45 @@ namespace TruvideoMediaiOS
 
         [Export("updateIncludeInReportForRequest:includeInReport:")]
         void UpdateIncludeInReportForRequest(NSUuid requestId, bool includeInReport);
+        
+        
+        // -------------------------
+        // STREAM APIs (NEW)
+        // -------------------------
+
+        [Export("getStreamUploadRequestByIdWithId:completion:")]
+        void GetStreamUploadRequestById(string id,
+            Action<StreamUploadRequestResponse, NSError> completion);
+        
+        
+        [Export("getAllStreamUploadRequestsWithCompletion:")]
+        void GetAllStreamUploadRequests(Action<NSArray, NSError> completion);
+
+        [Export("streamUploadMediaWithId:title:tag:metaData:isIncludedInReport:isLibrary:completion:")]
+        void StreamUploadMedia(
+            string id,
+            string title,
+            string tag,
+            string metaData,
+            bool isIncludedInReport,
+            bool isLibrary,
+            Action<StreamUploadRequestResponse, NSError> completion);
+        
+        [Export("streamPauseMediaWithId:completion:")]
+        void StreamPauseMedia(string id, Action<string, NSError> completion);
+        
+        [Export("streamResumeMediaWithId:completion:")]
+        void StreamResumeMedia(string id, Action<string, NSError> completion);
+        
+        [Export("streamDeleteMediaWithId:completion:")]
+        void StreamDeleteMedia(string id, Action<string, NSError> completion);
+        
+        [Export("retryStreamRequestWithId:completion:")]
+        void RetryStreamRequest(string id, Action<string, NSError> completion);
+        
+        [Export("cancelStreamRequestWithId:completion:")]
+        void CancelStreamRequest(string id, Action<string, NSError> completion);
+        
     }
 
     [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia29TruvideoMediaSdkUploadRequest")]
@@ -161,85 +242,3 @@ namespace TruvideoMediaiOS
      }
     
 }
-
-
-
-
-//
-// using System;
-// using System.Runtime.InteropServices.JavaScript;
-// using Foundation;
-// using ObjCRuntime;
-//
-//
-// namespace TruvideoMediaiOS {
-//
-//     // Define the delegate interface (protocol)
-//     [BaseType(typeof(NSObject))]
-//     [Protocol,Model]
-//     interface TruvideoMediaUploadDelegate
-//     {
-//         // The Swift function is: func uploadProgress(updated progress: Double)
-//         [Export("uploadProgressWithUpdated:")] // ✅ Corrected Export
-//           void UploadProgress(double updated);
-//
-//     }
-//
-//     // @interface MediaResponse : NSObject
-//     [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia13MediaResponse")]
-//     [DisableDefaultCtor]
-//     interface MediaResponse
-//     {
-//         // @property (readonly, copy, nonatomic) NSDate * _Nonnull createdDate;
-//         [Export("createdDate", ArgumentSemantic.Copy)]
-//         NSDate CreatedDate { get; }
-//
-//         // @property (readonly, copy, nonatomic) NSString * _Nonnull remoteId;
-//         [Export("remoteId")]
-//         string RemoteId { get; }
-//
-//         // @property (readonly, nonatomic) float transcriptionLength;
-//         [Export("transcriptionLength")]
-//         float TranscriptionLength { get; }
-//
-//         // @property (readonly, copy, nonatomic) NSURL * _Nullable transcriptionURL;
-//         [NullAllowed, Export("transcriptionURL", ArgumentSemantic.Copy)]
-//         NSUrl TranscriptionURL { get; }
-//
-//         // @property (readonly, copy, nonatomic) NSURL * _Nonnull uploadedFileURL;
-//         [Export("uploadedFileURL", ArgumentSemantic.Copy)]
-//         NSUrl UploadedFileURL { get; }
-//         
-//         [Export("tags")]
-//         NSDictionary Tags { get; }
-//         
-//         [Export("metadata")]
-//         NSDictionary Metadata { get; }
-//         
-//         [Export("type")]
-//         NSString Type { get; }
-//         
-//     }
-//     
-//     // @interface TruvideoMedia : NSObject
-//     [BaseType(typeof(NSObject), Name = "_TtC13TruvideoMedia13TruvideoMedia")]
-//     [DisableDefaultCtor]
-//     interface TruvideoMedia
-//     {
-//         // @property (readonly, nonatomic, strong, class) TruvideoMedia * _Nonnull shared;
-//         [Static]
-//         [Export("shared", ArgumentSemantic.Strong)]
-//         TruvideoMedia Shared { get; }
-//
-//         // Add delegate property
-//         [NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
-//         TruvideoMediaUploadDelegate Delegate { get; set; }
-//
-//         // -(void)uploadWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
-//         [Export("uploadWithPath:tag:metaData:completion:")]
-//         void UploadMedia(string path, string tag, string metaData, Action<MediaResponse, NSError> completion);
-//         
-//         [Export("searchWithType:tags:pageNumber:size:completion:")]
-//         void Search(MediaType type, string tags, int pageNumber, int size, Action<NSArray, NSError> completion);
-//     }
-// }

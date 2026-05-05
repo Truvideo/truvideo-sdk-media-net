@@ -1,0 +1,314 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TruVideoMediaUpload
+import Combine
+import CoreData
+import DI
+import Foundation
+import Network
+import Swift
+import TruVideoFoundation
+import TruvideoSdk
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public protocol AuthTokenProvider {
+  func retrieveToken() async throws -> Swift.String?
+}
+public struct PersistentContainerDependencyKey : DI.DependencyKey {
+  public static let defaultValue: CoreData.NSPersistentContainer
+  public typealias Value = CoreData.NSPersistentContainer
+}
+extension DI.DependencyValues {
+  final public var persistentContainer: CoreData.NSPersistentContainer {
+    get
+    set
+  }
+}
+#if compiler(>=5.3) && $RetroactiveAttribute
+extension Foundation.NSPredicate : @unchecked @retroactive Swift.Sendable {
+}
+#else
+extension Foundation.NSPredicate : @unchecked Swift.Sendable {
+}
+#endif
+extension TruVideoFoundation.ErrorReason {
+  public enum StreamErrorReason {
+    public static let failedToAppendContentsOfURL: TruVideoFoundation.ErrorReason
+    public static let failedToCancelStream: TruVideoFoundation.ErrorReason
+    public static let failedToDeleteStream: TruVideoFoundation.ErrorReason
+    public static let failedToFinishStream: TruVideoFoundation.ErrorReason
+    public static let missingMediaId: TruVideoFoundation.ErrorReason
+    public static let failedToResumeStream: TruVideoFoundation.ErrorReason
+    public static let failedToRetryStream: TruVideoFoundation.ErrorReason
+    public static let failedToSuspendStream: TruVideoFoundation.ErrorReason
+  }
+  public enum StreamContainerErrorReason {
+    public static let failedToCreateStream: TruVideoFoundation.ErrorReason
+    public static let failedToRetrieveStreams: TruVideoFoundation.ErrorReason
+  }
+}
+public enum FileType : Swift.String, Swift.CaseIterable, Swift.Hashable, Swift.Sendable {
+  case mp4
+  case mov
+  case avi
+  case mkv
+  case flv
+  case wmv
+  case g3pp
+  case webm
+  case jpg
+  case jpeg
+  case png
+  case svg
+  case mp3
+  case wav
+  case aac
+  case flac
+  case pdf
+  case unknown
+  public var mediaType: TruVideoMediaUpload.MediaType {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [TruVideoMediaUpload.FileType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [TruVideoMediaUpload.FileType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers open class MUPartHandle : @unchecked Swift.Sendable, Swift.Identifiable {
+  final public let id: Foundation.UUID
+  open func cancel()
+  open func resume()
+  open func retry()
+  open func suspend()
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Foundation.UUID
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class MUStream : @unchecked Swift.Sendable, Swift.Identifiable {
+  final public let id: Foundation.UUID
+  public var completedAt: Foundation.Date? {
+    get
+  }
+  final public let createdAt: Foundation.Date
+  final public let fileType: TruVideoMediaUpload.FileType
+  final public let fileURL: Foundation.URL
+  public var isIncludedInReport: Swift.Bool {
+    get
+  }
+  public var isLibrary: Swift.Bool {
+    get
+  }
+  public var mediaId: Foundation.UUID? {
+    get
+  }
+  public var metadata: TruVideoFoundation.Metadata {
+    get
+  }
+  public var status: TruVideoMediaUpload.MUStreamStatus {
+    get
+  }
+  public var tags: [Swift.String : Swift.String] {
+    get
+  }
+  public var title: Swift.String {
+    get
+  }
+  public struct Options {
+    public let isIncludedInReport: Swift.Bool
+    public let isLibrary: Swift.Bool
+    public let metadata: TruVideoFoundation.Metadata
+    public let tags: [Swift.String : Swift.String]
+    public let title: Swift.String
+    public init(isIncludedInReport: Swift.Bool = true, isLibrary: Swift.Bool = false, metadata: TruVideoFoundation.Metadata = [:], tags: [Swift.String : Swift.String] = [:], title: Swift.String = "")
+  }
+  public enum StreamError : Swift.Error {
+    case streamCancelled
+    case streamClosed
+    case streamFailed
+    public static func == (a: TruVideoMediaUpload.MUStream.StreamError, b: TruVideoMediaUpload.MUStream.StreamError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+  @discardableResult
+  open func append(contentsOf url: Foundation.URL, chunkSize: Swift.Int = 5 * 1_024 * 1_024) async throws -> [TruVideoMediaUpload.MUPartHandle]
+  open func cancel() async throws
+  open func delete() async throws
+  open func finish(with options: TruVideoMediaUpload.MUStream.Options = Options()) async throws
+  @discardableResult
+  open func onCompletion(_ completionHandler: @escaping (Swift.Result<Foundation.UUID, any Swift.Error>) -> Swift.Void) -> Self
+  open func resume() async throws
+  open func retry() async throws
+  open func statusUpdates() -> _Concurrency.AsyncStream<TruVideoMediaUpload.MUStreamStatus>
+  open func suspend() async throws
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Foundation.UUID
+}
+@frozen public enum MUStreamStatus : Swift.String, Swift.Sendable, Swift.Hashable {
+  case cancelled
+  case completed
+  case failed
+  case ready
+  case running
+  case suspended
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(ManagedUpload) public class ManagedUpload : CoreData.NSManagedObject {
+  @objc @NSManaged dynamic public var id: Foundation.UUID {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var filePath: Foundation.URL {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var retryCount: Swift.Int16 {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var status: Swift.Int16 {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var createdAt: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var updatedAt: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var progress: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var cloudServiceId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var errorMessage: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var remoteCreationDate: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var remoteId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var remoteURL: Foundation.URL? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var bookmarkData: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var tags: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var metadata: Foundation.Data? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var transcriptURL: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var transcriptLength: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var includeInReport: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var isLibrary: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+public enum MediaType : Swift.String, Swift.Codable, Swift.Sendable {
+  case video
+  case image
+  case audio
+  case document
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MediaUploadStatus : Swift.String, Swift.Sendable, Swift.Hashable {
+  case cancelled
+  case completed
+  case error
+  case idle
+  case paused
+  case processing
+  case synchronizing
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public func == <Root, Value>(lhs: Swift.KeyPath<Root, Value>, rhs: Value) -> (Root) -> Swift.Bool where Value : Swift.Equatable
+public func << <Root, Value>(lhs: Swift.KeyPath<Root, Value>, rhs: [Value]) -> (Root) -> Swift.Bool where Value : Swift.Equatable
+public func >= <Root, Value>(lhs: Swift.KeyPath<Root, Value>, rhs: Value) -> (Root) -> Swift.Bool where Value : Swift.Comparable
+public func != <Root, Value>(lhs: Swift.KeyPath<Root, Value>, rhs: Value) -> (Root) -> Swift.Bool where Value : Swift.Equatable
+public func && <Root>(lhs: @escaping (Root) -> Swift.Bool, rhs: @escaping (Root) -> Swift.Bool) -> (Root) -> Swift.Bool
+public func || <Root>(lhs: @escaping (Root) -> Swift.Bool, rhs: @escaping (Root) -> Swift.Bool) -> (Root) -> Swift.Bool
+@_hasMissingDesignatedInitializers open class StreamContainer : @unchecked Swift.Sendable {
+  public static let shared: TruVideoMediaUpload.StreamContainer
+  convenience public init()
+  open func newStream(from fileURL: Foundation.URL, of fileType: TruVideoMediaUpload.FileType) async throws -> TruVideoMediaUpload.MUStream
+  open func retrieveStreams(where isIncluded: (TruVideoMediaUpload.MUStream) -> Swift.Bool = { _ in true }) async throws -> [TruVideoMediaUpload.MUStream]
+  open func streams(where isIncluded: @escaping (TruVideoMediaUpload.MUStream) -> Swift.Bool = { _ in true }) -> _Concurrency.AsyncStream<[TruVideoMediaUpload.MUStream]>
+  @objc deinit
+}
+@frozen public enum StreamPartStatus : Swift.String, Swift.Sendable {
+  case cancelled
+  case completed
+  case failed
+  case pending
+  case retrying
+  case suspended
+  case uploading
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension TruVideoMediaUpload.FileType : Swift.RawRepresentable {}
+extension TruVideoMediaUpload.MUStream.StreamError : Swift.Equatable {}
+extension TruVideoMediaUpload.MUStream.StreamError : Swift.Hashable {}
+extension TruVideoMediaUpload.MUStreamStatus : Swift.RawRepresentable {}
+extension TruVideoMediaUpload.MUStreamStatus : Swift.BitwiseCopyable {}
+extension TruVideoMediaUpload.MediaType : Swift.Equatable {}
+extension TruVideoMediaUpload.MediaType : Swift.Hashable {}
+extension TruVideoMediaUpload.MediaType : Swift.RawRepresentable {}
+extension TruVideoMediaUpload.MediaUploadStatus : Swift.RawRepresentable {}
+extension TruVideoMediaUpload.StreamPartStatus : Swift.Equatable {}
+extension TruVideoMediaUpload.StreamPartStatus : Swift.Hashable {}
+extension TruVideoMediaUpload.StreamPartStatus : Swift.RawRepresentable {}
+extension TruVideoMediaUpload.StreamPartStatus : Swift.BitwiseCopyable {}

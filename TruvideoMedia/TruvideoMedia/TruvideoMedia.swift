@@ -20,56 +20,61 @@ final public class TruvideoMedia: NSObject {
     private var cancellables = Set<AnyCancellable>()
     private var requestMapping = [UUID: TruvideoSdkMediaUploadRequest]()
     
-  
-    @objc public func mediaBuilder(
+    
+    @objc(mediaBuilderWithPath:tag:metaData:completion:)
+    public func mediaBuilder(
         path: String,
         tag: String,
         metaData: String,
         completion: @escaping (_ request: TruvideoMediaSdkUploadRequest?, _ error: Error?) -> Void
-    ) async {
-        do {
-            guard let url = URL(string: path) else { return }
-            
-            let mediaBuilder = TruvideoSdkMedia.FileUploadRequestBuilder(fileURL: url)
-            let tagsDict = try convertToDictionary(from: tag)
-            let metaDataDict = try convertToDictionary(from: metaData)
-            
-            for (key, value) in tagsDict {
-                mediaBuilder.addTag(key, value)
+    ) {
+        Task {
+            do {
+                guard let url = URL(string: path) else {
+                    completion(nil, NSError(domain: "INVALID_URL", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid file path URL"]))
+                    return
+                }
+                let mediaBuilder = TruvideoSdkMedia.FileUploadRequestBuilder(fileURL: url)
+                let tagsDict = try convertToDictionary(from: tag)
+                let metaDataDict = try convertToDictionary(from: metaData)
+                for (key, value) in tagsDict {
+                    mediaBuilder.addTag(key, value)
+                }
+                for (key, value) in metaDataDict {
+                    mediaBuilder.addMetadata(key, value)
+                }
+                let fileUploadRequest = try mediaBuilder.build()
+                self.requestMapping[fileUploadRequest.id] = fileUploadRequest
+                let wrappedRequest = await TruvideoMediaSdkUploadRequest(
+                    id: fileUploadRequest.id as NSUUID,
+                    filePath: fileUploadRequest.filePath,
+                    errorMessage: fileUploadRequest.errorMessage,
+                    remoteId: fileUploadRequest.remoteId,
+                    remoteURL: fileUploadRequest.remoteURL,
+                    uploadProgress: fileUploadRequest.uploadProgress,
+                    transcriptionURL: fileUploadRequest.transcriptionURL,
+                    transcriptionLenght: fileUploadRequest.transcriptionLength as NSNumber?,
+                    metadata: fileUploadRequest.metadata.dictionary as NSDictionary,
+                    tags: fileUploadRequest.tags.dictionary as NSDictionary,
+                    status: convertTruvideoStatusToMediaStatus(fileUploadRequest.status),
+                    createdAt: fileUploadRequest.createdAt,
+                    updatedAt: fileUploadRequest.updatedAt,
+                    includeInReport: fileUploadRequest.includeInReport ?? false,
+                    fileType: convertTruvideoTypeToMediaType(fileUploadRequest.fileType),
+                    durationMilliseconds: fileUploadRequest.durationMilliseconds ?? 0
+                )
+                DispatchQueue.main.async {
+                    completion(wrappedRequest, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
-            
-            for (key, value) in metaDataDict {
-                mediaBuilder.addMetadata(key, value)
-            }
-            
-            let fileUploadRequest = try mediaBuilder.build()
-            self.requestMapping[fileUploadRequest.id] = fileUploadRequest
-            
-            // Wrap into your request object
-            let wrappedRequest = await TruvideoMediaSdkUploadRequest(
-                id: fileUploadRequest.id as NSUUID, // ensure this exists on SDK side
-                filePath: fileUploadRequest.filePath,
-                errorMessage: fileUploadRequest.errorMessage,
-                remoteId: fileUploadRequest.remoteId,
-                remoteURL: fileUploadRequest.remoteURL,
-                uploadProgress: fileUploadRequest.uploadProgress,
-                transcriptionURL: fileUploadRequest.transcriptionURL,
-                transcriptionLenght: fileUploadRequest.transcriptionLength as NSNumber?,
-                metadata: fileUploadRequest.metadata.dictionary as? NSDictionary,
-                tags:fileUploadRequest.tags.dictionary as? NSDictionary,
-                status: convertTruvideoStatusToMediaStatus(fileUploadRequest.status),
-                createdAt: fileUploadRequest.createdAt,
-                updatedAt: fileUploadRequest.updatedAt,
-                includeInReport: fileUploadRequest.includeInReport ?? false,
-                fileType: convertTruvideoTypeToMediaType(fileUploadRequest.fileType),
-                durationMilliseconds: fileUploadRequest.durationMilliseconds ?? 0
-            )
-            completion(wrappedRequest,nil)
-        } catch {
-            completion(nil,error)
         }
     }
     
+  
     private func convertTruvideoStatusToMediaStatus(_ status: TruvideoSdkMediaUploadRequest.Status) -> MediaStatus {
         switch status {
         case .paused: return .paused
@@ -117,8 +122,8 @@ final public class TruvideoMedia: NSObject {
                     uploadProgress: fileUploadRequest.uploadProgress,
                     transcriptionURL: fileUploadRequest.transcriptionURL,
                     transcriptionLenght: fileUploadRequest.transcriptionLength as NSNumber?,
-                    metadata: fileUploadRequest.metadata.dictionary as? NSDictionary,
-                    tags:fileUploadRequest.tags.dictionary as? NSDictionary,
+                    metadata: fileUploadRequest.metadata.dictionary as NSDictionary,
+                    tags:fileUploadRequest.tags.dictionary as NSDictionary,
                     status: convertTruvideoStatusToMediaStatus(fileUploadRequest.status),
                     createdAt: fileUploadRequest.createdAt,
                     updatedAt: fileUploadRequest.updatedAt,
@@ -133,45 +138,7 @@ final public class TruvideoMedia: NSObject {
             }
         }
     }
-        
-//    @objc public func getFileUploadRequests(
-//        byStatus: MediaStatus,
-//        completion: @escaping (_ result: [TruvideoMediaSdkUploadRequest], _ error: Error?) -> Void
-//    ) {
-//        Task {
-//            do {
-//                let status = convertMediaStatusToTruvideoStatus(byStatus)
-//                let sdkRequests = try TruvideoSdkMedia.getFileUploadRequests(byStatus: status)
-//                
-//                // Map each SDK request to your wrapper
-//                let wrappedRequests = sdkRequests.map { sdkRequest in
-//                    TruvideoMediaSdkUploadRequest(
-//                        id: sdkRequest.id as NSUUID,
-//                        filePath: sdkRequest.filePath,
-//                        errorMessage: sdkRequest.errorMessage,
-//                        remoteId: sdkRequest.remoteId,
-//                        remoteURL: sdkRequest.remoteURL,
-//                        uploadProgress: sdkRequest.uploadProgress,
-//                        transcriptionURL: sdkRequest.transcriptionURL,
-//                        transcriptionLenght: sdkRequest.transcriptionLength as? NSNumber,
-//                        metadata: sdkRequest.metadata.dictionary as? NSDictionary,
-//                        tags: sdkRequest.tags.dictionary as? NSDictionary,
-//                        status: convertTruvideoStatusToMediaStatus(sdkRequest.status),
-//                        createdAt: sdkRequest.createdAt,
-//                        updatedAt: sdkRequest.updatedAt,
-//                        includeInReport: sdkRequest.includeInReport ?? false,
-//                        fileType: convertTruvideoTypeToMediaType(sdkRequest.fileType),
-//                        durationMilliseconds: sdkRequest.durationMilliseconds ?? 0
-//                    )
-//                }
-//                
-//                completion(wrappedRequests, nil)
-//            } catch {
-//                completion([], error)
-//            }
-//        }
-//    }
-    
+            
     
     @objc public func getFileUploadRequests(
         byStatus: MediaStatus,
@@ -197,8 +164,8 @@ final public class TruvideoMedia: NSObject {
                         uploadProgress: sdkRequest.uploadProgress,
                         transcriptionURL: sdkRequest.transcriptionURL,
                         transcriptionLenght: sdkRequest.transcriptionLength as? NSNumber,
-                        metadata: sdkRequest.metadata.dictionary as? NSDictionary,
-                        tags: sdkRequest.tags.dictionary as? NSDictionary,
+                        metadata: sdkRequest.metadata.dictionary as NSDictionary,
+                        tags: sdkRequest.tags.dictionary as NSDictionary,
                         status: convertTruvideoStatusToMediaStatus(sdkRequest.status),
                         createdAt: sdkRequest.createdAt,
                         updatedAt: sdkRequest.updatedAt,
@@ -280,105 +247,336 @@ final public class TruvideoMedia: NSObject {
         }
         
     }
-    
+
+
     @objc public func uploadRequest(_ requestId: UUID,completion: @escaping (_ result: MediaResponse?, _ error: Error?) -> Void) {
-        let uploadRequest = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        let completeCancellable = uploadRequest?.completionHandler
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { receiveCompletion in
-                switch receiveCompletion {
-                case .finished:
-                    print("Upload finished")
-                case .failure(let error):
-                    print("Upload failed:", error)
-                    completion(nil,error)
+        do {
+            let uploadRequest = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+     
+            let completeCancellable = uploadRequest.completionHandler
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { receiveCompletion in
+                    switch receiveCompletion {
+                    case .finished:
+                        print("Upload finished")
+                    case .failure(let error):
+                        print("Upload failed:", error)
+                        completion(nil, error)
+                    }
+                }, receiveValue: { uploadedResult in
+                    completion(uploadedResult.media, nil)
+                })
+     
+            completeCancellable.store(in: &disposeBag)
+     
+            let progressCancellable = uploadRequest.progressHandler
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] progress in
+                    let percentage = progress.percentage * 100
+                    print("Upload progress: \(percentage)%")
+                    self?.delegate?.uploadProgress(updated: Double(percentage))
                 }
-            }, receiveValue: { uploadedResult in
-                completion(uploadedResult.media,nil)
-            })
+     
+            progressCancellable.store(in: &disposeBag)
+     
+            try uploadRequest.upload()
+     
+        } catch {
+            completion(nil, error)
+        }
+    }
+    
+    @objc public func pauseRequest(_ requestId: UUID, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        do {
+            // Attempt to get the request; throws if not found
+            let request = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+            try request.pause() // throws if pause fails
+            completion("request paused", nil)
+        } catch {
+            completion(nil, error)
+        }
+    }
+    
+    
+    @objc public func resumeRequest(_ requestId: UUID, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        do {
+            let request = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+            try request.resume()
+            completion("request resumed", nil)
+        } catch {
+            completion(nil, error)
+        }
+    }
 
-        completeCancellable?.store(in: &disposeBag)
+    @objc public func cancelRequest(_ requestId: UUID, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        do {
+            let request = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+            try request.cancel()
+            completion("request cancelled", nil)
+        } catch {
+            completion(nil, error)
+        }
+    }
+    
+    @objc
+    public func deleteRequest(_ requestId: UUID, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        do {
+        
+            let request = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+            try request.delete()
+            completion("request deleted", nil)
 
-        // Handle progress updates
-        let progressCancellable = uploadRequest?.progressHandler
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] progress in
-                let percentage = progress.percentage * 100
-                print("Upload progress: \(percentage)%")
-                self?.delegate?.uploadProgress(updated: Double(percentage))
-            })
+        } catch {
+            completion(nil, error)
+        }
+    }
+    
+    @objc public func retryRequest(_ requestId: UUID, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
+        do {
+            // Try to get the request (throws if not found)
+            let request = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+            // Attempt retry
+            try request.retry()
+            completion("request retried", nil)
+        } catch {
+            // Return any error encountered
+            completion(nil, error)
+        }
+    }
+    
+    @objc public func updateIncludeInReportForRequest(_ requestId: UUID, includeInReport: Bool, completion: ((_ success: Bool, _ error: Error?) -> Void)? = nil) {
+        do {
+            // Attempt to get the request
+            let request = try TruvideoSdkMedia.getFileUploadRequest(withId: requestId.uuidString)
+            // Update includeInReport
+            try request.updateIncludeInReport(includeInReport)
+            completion?(true, nil) // Notify success
+        } catch {
+            print("Failed to update includeInReport:", error)
+            completion?(false, error) // Notify failure
+        }
+    }
+    
+    
+    @objc
+    public func streamResumeMedia(id: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
+                try await request.resume()
+                completion("stream request resumed", nil)
+            } catch {
+                completion(nil, error)
+            }
+        }
+    }
+    
+    @objc
+    public func streamPauseMedia(id: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
+                try await request.pause()
+                completion("stream request paused", nil)
+            } catch {
+                completion(nil, error)
+            }
+        }
+    }
+    @objc
+    public func streamDeleteMedia(id: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+               // print("Fetching stream request with id: \(id)")
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
+                //print("Stream request found: \(request)")
+                try await request.delete()
+                //print("Stream request deleted successfully")
+                completion("stream request deleted", nil)
+            } catch {
+                //print("Error occurred: \(error)")
+                completion(nil, error)
+            }
+        }
+    }
+    
+    @objc
+    public func retryStreamRequest(id: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+               // print("Fetching stream request with id: \(id)")
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
+                //print("Stream request found: \(request)")
+                try await request.retry()
+                //print("Stream request retried successfully")
+                completion("stream request retried", nil)
 
-        progressCancellable?.store(in: &disposeBag)
-        do {
-           try uploadRequest?.upload()
-        }catch let error {
-            completion(nil,error)
+            } catch {
+                print("Error occurred: \(error)")
+                completion(nil, error)
+            }
         }
+    }
+  
+    @objc
+    public func cancelStreamRequest(id: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+                //print("Fetching stream request with id: \(id)")
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
+                //print("Stream request found: \(request)")
+                try await request.cancel()
+                //print("Stream request cancelled successfully")
+                completion("stream request cancelled", nil)
+
+            } catch {
+                //print("Error occurred: \(error)")
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
+    @objc public func getStreamUploadRequestById(id: String, completion: @escaping (_ result: StreamUploadRequestResponse?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
         
+                let wrapped = StreamUploadRequestResponse(
+                    id: "\(request.id)",
+                    status: request.status.rawValue,
+                    type: request.fileType.rawValue,
+                    mediaId: request.remoteId ?? "",
+                    tags: request.tags.dictionary as NSDictionary,
+                    metadata: request.metadata.dictionary as NSDictionary,
+                    includeInReport: request.isIncludedInReport,
+                    isLibrary: request.isLibrary,
+                    parts: [],
+                    createdAt: "\(request.createdAt)",
+                    fileURL: request.fileUrl.absoluteString
+                )
+                completion(wrapped, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }
     }
+
     
-    
-    @objc public func retryRequest(_ requestId: UUID,completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        let request = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        do {
-            try request?.retry()
-            completion("request retried",nil)
-        }catch {
-            completion(nil,error)
+    @objc public func getAllStreamUploadRequests(completion: @escaping (_ result: [StreamUploadRequestResponse], _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+                let requests = try await TruvideoSdkMedia.getAllUploadRequests()
+                var wrappedRequests: [StreamUploadRequestResponse] = []
+                wrappedRequests.reserveCapacity(requests.count)
+                for sdkRequest in requests {
+                    let duration = sdkRequest.durationMilliseconds ?? 0
+
+                    let wrapped = StreamUploadRequestResponse(
+                        id: "\(sdkRequest.id)",
+                        status: sdkRequest.status.rawValue,
+                        type: sdkRequest.fileType.rawValue,
+                        mediaId: sdkRequest.remoteId ?? "",
+                        tags: sdkRequest.tags.dictionary as NSDictionary,
+                        metadata: sdkRequest.metadata.dictionary as NSDictionary,
+                        includeInReport: sdkRequest.isIncludedInReport,
+                        isLibrary: sdkRequest.isLibrary,
+                        parts: [],
+                        createdAt: "\(sdkRequest.createdAt)",
+                        fileURL: sdkRequest.fileUrl.absoluteString
+                    )
+
+                    wrappedRequests.append(wrapped)
+                }
+
+                completion(wrappedRequests, nil)
+                
+            } catch {
+                completion([], error)
+            }
         }
     }
     
-    @objc public func pauseRequest(_ requestId: UUID,completion: @escaping (_ result: String?, _ error: Error?) -> Void){
-        let request = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        do {
-            try request?.pause()
-            completion("request paused",nil)
-        }catch {
-            completion(nil,error)
+    
+
+    
+    @objc
+    public func streamUploadMedia(
+        id: String,
+        title: String,
+        tag: String,
+        metaData: String,
+        isIncludedInReport: Bool,
+        isLibrary: Bool,
+        completion: @escaping (_ result: StreamUploadRequestResponse?, _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+               // print("Fetching stream request with id: \(id)")
+
+                let request = try await TruvideoSdkMedia.getUploadRequestById(id)
+
+                // Convert JSON safely
+                let tagsDict = try? convertToDictionary(from: tag) ?? [:]
+                let metadataDict = try? convertToDictionary(from: metaData) ?? [:]
+
+                // Build Metadata object (REQUIRED)
+                let metadataBuilder = TruvideoSdkMediaMetadata.builder()
+
+                let metadataDict1 = try? convertToDictionary(from: metaData)
+
+                for (key, value) in metadataDict1 ?? [:] {
+                    metadataBuilder.set(key, value)
+                }
+
+                let metadataObject = metadataBuilder.build()
+
+                //print("Creating upload options")
+
+                let options = TruvideoSdkMediaStreamRequest.Options(
+                    isIncludedInReport: isIncludedInReport,
+                    isLibrary: isLibrary,
+                    metadata: metadataObject,
+                    tags: tagsDict ?? [:],
+                    title: title
+                )
+
+               // print("Starting stream upload")
+
+                let uploadedMedia = try await request.upload(with: options)
+
+                let wrapped = StreamUploadRequestResponse(
+                    id: "\(request.id)",
+                    status: request.status.rawValue,
+                    type: request.fileType.rawValue,
+                    mediaId: request.remoteId ?? "",
+                    tags: request.tags.dictionary as NSDictionary,
+                    metadata: request.metadata.dictionary as NSDictionary,
+                    includeInReport: request.isIncludedInReport,
+                    isLibrary: request.isLibrary,
+                    parts: [],
+                    createdAt: "\(request.createdAt)",
+                    fileURL: request.fileUrl.absoluteString
+                )
+
+                completion(wrapped, nil)
+
+            } catch {
+               // print("Stream upload failed: \(error)")
+                completion(nil, error)
+            }
         }
     }
     
-    @objc public func resumeRequest(_ requestId: UUID,completion: @escaping (_ result: String?, _ error: Error?) -> Void)  {
-        let request = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        do {
-            try request?.resume()
-            completion("request resumed",nil)
-        }catch {
-            completion(nil,error)
-        }
-        
-    }
     
-    @objc public func deleteRequest(_ requestId: UUID,completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        let request = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        do {
-            try request?.delete()
-            completion("request deleted",nil)
-        }catch {
-            completion(nil,error)
-        }
-        
-    }
     
-    @objc public func cancelRequest(_ requestId: UUID,completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-        let request = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        do {
-            try request?.cancel()
-            completion("request cancelled",nil)
-        }catch {
-            completion(nil,error)
-        }
-        
-    }
-    
-    @objc public func updateIncludeInReportForRequest(_ requestId: UUID, includeInReport: Bool) {
-        let request = try? TruvideoSdkMedia.getFileUploadRequest(withId : requestId.uuidString)
-        do {
-            try request?.updateIncludeInReport(includeInReport)
-        }catch {
-            print(error)
-        }
-    }
 }
 
 
@@ -396,7 +594,47 @@ extension TruvideoSDKMedia {
         )
     }
 }
+@objc
+public class StreamUploadRequestResponse: NSObject {
 
+    internal init(
+        id: String,
+        status: String,
+        type: String,
+        mediaId: String,
+        tags: NSDictionary? = nil,
+        metadata: NSDictionary? = nil,
+        includeInReport: Bool,
+        isLibrary: Bool,
+        parts: NSArray? = nil,
+        createdAt: String,
+        fileURL: String
+    ) {
+        self.id = id
+        self.status = status
+        self.type = type
+        self.mediaId = mediaId
+        self.tags = tags
+        self.metadata = metadata
+        self.includeInReport = includeInReport
+        self.isLibrary = isLibrary
+        self.parts = parts
+        self.createdAt = createdAt
+        self.fileURL = fileURL
+    }
+
+    @objc public let id: String
+    @objc public let status: String
+    @objc public let type: String
+    @objc public let mediaId: String
+    @objc public let tags: NSDictionary?
+    @objc public let metadata: NSDictionary?
+    @objc public let includeInReport: Bool
+    @objc public let isLibrary: Bool
+    @objc public let parts: NSArray?
+    @objc public let createdAt: String
+    @objc public let fileURL: String
+}
 @objc
 public class MediaResponse: NSObject {
     internal init(createdDate: Date, remoteId: String, transcriptionLength: Float, transcriptionURL: URL? = nil, uploadedFileURL: URL,tags: NSDictionary? = nil, metadata: NSDictionary? = nil, type: String? = nil) {
@@ -532,29 +770,91 @@ public class TruvideoMediaSdkUploadRequest: NSObject{
     @objc public func updateIncludeInReport(requestId: UUID,_ includeInReport: Bool) throws {
         TruvideoMedia.shared.updateIncludeInReportForRequest(requestId, includeInReport: includeInReport)
     }
+    
+    
+    @objc
+    public func streamRetry(requestId: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.retryStreamRequest(id: requestId,completion: { result, error in
+                completion(result, error)
+            }
+        )
+    }
+    
+    @objc
+    public func streamPause(requestId: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.streamPauseMedia(id: requestId,completion: { result, error in
+                completion(result, error)
+            }
+        )
+    }
+    
+    @objc
+    public func streamResume(requestId: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.streamResumeMedia(id: requestId,completion: { result, error in
+                completion(result, error)
+            }
+        )
+    }
+    
+    @objc
+    public func streamDelete(requestId: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.streamDeleteMedia(id: requestId,completion: { result, error in
+                completion(result, error)
+            }
+        )
+    }
+    
+    @objc
+    public func streamCancel(requestId: String,completion: @escaping (_ result: String?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.cancelStreamRequest(id: requestId,completion: { result, error in
+                completion(result, error)
+            }
+        )
+    }
+    
+    @objc
+    public func getStreamRequest(requestId: String,completion: @escaping (_ result: StreamUploadRequestResponse?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.getStreamUploadRequestById(id: requestId,completion: completion)
+    }
+    
+    @objc
+    public func getAllStreamRequests(completion: @escaping (_ result: [StreamUploadRequestResponse], _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.getAllStreamUploadRequests(completion: completion)
+    }
+    
+    @objc
+    public func streamUpload(
+        requestId: String,
+        title: String,
+        tag: String,
+        metaData: String,
+        isIncludedInReport: Bool,
+        isLibrary: Bool,
+        completion: @escaping (_ result: StreamUploadRequestResponse?, _ error: Error?) -> Void
+    ) {
+        TruvideoMedia.shared.streamUploadMedia(
+            id: requestId,
+            title: title,
+            tag: tag,
+            metaData: metaData,
+            isIncludedInReport: isIncludedInReport,
+            isLibrary: isLibrary,
+            completion: completion
+        )
+    }
+    
+    
+    
 }
 
 extension TruvideoSdkMediaUploadRequest {
-    
-//    var mediaRequest: TruvideoMediaSdkUploadRequest {
-//        TruvideoMediaSdkUploadRequest(
-//            id: id as NSUUID, // ensure this exists on SDK side
-//            filePath: filePath,
-//            errorMessage: errorMessage,
-//            remoteId: remoteId,
-//            remoteURL: remoteURL,
-//            uploadProgress: uploadProgress,
-//            transcriptionURL: transcriptionURL,
-//            transcriptionLenght: transcriptionLength as NSNumber?,
-//            metadata: metadata.dictionary as? NSDictionary,
-//            tags: tags.dictionary as? NSDictionary,
-//            status: convertTruvideoStatusToMediaStatus(status),
-//            createdAt: createdAt,
-//            updatedAt: updatedAt,
-//            includeInReport: includeInReport ?? false,
-//            fileType: convertTruvideoTypeToMediaType(fileType),
-//            durationMilliseconds: durationMilliseconds ?? 0)
-//    }
     
     func makeMediaRequest() async -> TruvideoMediaSdkUploadRequest {
             let duration = await durationMilliseconds ?? 0
@@ -604,82 +904,3 @@ extension TruvideoSdkMediaUploadRequest {
         }
     }
 }
-
-
-//    @objc public func streamFileUploadRequests(byStatus: MediaStatus, completion: @escaping (_ result: String?, _ error: Error?) -> Void) {
-//            let status = convertMediaStatusToTruvideoStatus(byStatus)
-//
-//            TruvideoSdkMedia
-//                .streamFileUploadRequests(byStatus: status)
-//                .sink { uploadRequests in
-//                    let json = uploadRequests.map { $0.filePath } // or any meaningful property
-//
-//                    do {
-//                        let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-//                        let jsonString = String(data: jsonData, encoding: .utf8)
-//                        completion(jsonString, nil)
-//                    } catch {
-//                        completion(nil, error)
-//                    }
-//
-//                }
-//                .store(in: &cancellables)
-//        }
-
-
-//    @objc public func upload(path: String, tag: String, metaData: String, completion: @escaping (_ result: MediaResponse?, _ error: Error?) -> Void) {
-//        do {
-//            guard let url = URL(string: path) else { return }
-//            let mediaBuilder = TruvideoSdkMedia.FileUploadRequestBuilder(fileURL: url)
-//            let tagsDict = try convertToDictionary(from: tag)
-//            let metaDataDict = try convertToDictionary(from: metaData)
-//
-//            // Add tags
-//            for (key, value) in tagsDict {
-//                mediaBuilder.addTag(key, value)
-//            }
-//
-//            // Add metadata
-//            for (key, value) in metaDataDict {
-//                mediaBuilder.addMetadata(key, value)
-//            }
-//            let fileUploadRequest = try mediaBuilder.build()
-//
-//            // Handle completion
-//            let completeCancellable = fileUploadRequest.completionHandler
-//                .receive(on: DispatchQueue.main)
-//                .sink(receiveCompletion: { receiveCompletion in
-//                    switch receiveCompletion {
-//                    case .finished:
-//                        print("Upload finished")
-//                    case .failure(let error):
-//                        print("Upload failed:", error)
-//                        completion(nil, error)
-//                    }
-//                }, receiveValue: { uploadedResult in
-//                    completion(uploadedResult.media, nil)
-//                })
-//
-//            completeCancellable.store(in: &disposeBag)
-//
-//            // Handle progress updates
-//            let progressCancellable = fileUploadRequest.progressHandler
-//                .receive(on: DispatchQueue.main)
-//                .sink(receiveValue: { [weak self] progress in
-//                    let percentage = progress.percentage * 100
-//                    print("Upload progress: \(percentage)%")
-//                    self?.delegate?.uploadProgress(updated: percentage)
-//                })
-//
-//            progressCancellable.store(in: &disposeBag)
-//
-//            do {
-//                try fileUploadRequest.upload()
-//            } catch let error {
-//                completion(nil, error)
-//            }
-//        } catch let error {
-//            completion(nil, error)
-//        }
-//    }
-//

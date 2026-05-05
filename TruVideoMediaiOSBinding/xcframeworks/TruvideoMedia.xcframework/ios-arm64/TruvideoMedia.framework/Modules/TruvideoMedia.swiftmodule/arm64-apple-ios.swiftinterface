@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
 // swift-module-flags: -target arm64-apple-ios17.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name TruvideoMedia
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
 import Combine
 import Foundation
 import Swift
@@ -17,7 +17,7 @@ import _SwiftConcurrencyShims
   @objc public static let shared: TruvideoMedia.TruvideoMedia
   @objc weak final public var delegate: (any TruvideoMedia.TruvideoMediaUploadDelegate)?
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc final public func mediaBuilder(path: Swift.String, tag: Swift.String, metaData: Swift.String, completion: @escaping (_ request: TruvideoMedia.TruvideoMediaSdkUploadRequest?, _ error: (any Swift.Error)?) -> Swift.Void) async
+  @objc(mediaBuilderWithPath:tag:metaData:completion:) final public func mediaBuilder(path: Swift.String, tag: Swift.String, metaData: Swift.String, completion: @escaping (_ request: TruvideoMedia.TruvideoMediaSdkUploadRequest?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func getById(id: Swift.String, completion: @escaping (_ result: TruvideoMedia.TruvideoMediaSdkUploadRequest?, _ error: (any Swift.Error)?) -> Swift.Void)
@@ -32,22 +32,62 @@ import _SwiftConcurrencyShims
   @objc final public func uploadRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: TruvideoMedia.MediaResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc final public func retryRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func pauseRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func resumeRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func cancelRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func deleteRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc final public func cancelRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc final public func retryRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
-  @objc final public func updateIncludeInReportForRequest(_ requestId: Foundation.UUID, includeInReport: Swift.Bool)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func updateIncludeInReportForRequest(_ requestId: Foundation.UUID, includeInReport: Swift.Bool, completion: ((_ success: Swift.Bool, _ error: (any Swift.Error)?) -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func streamResumeMedia(id: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func streamPauseMedia(id: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func streamDeleteMedia(id: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func retryStreamRequest(id: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func cancelStreamRequest(id: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getStreamUploadRequestById(id: Swift.String, completion: @escaping (_ result: TruvideoMedia.StreamUploadRequestResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getAllStreamUploadRequests(completion: @escaping (_ result: [TruvideoMedia.StreamUploadRequestResponse], _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func streamUploadMedia(id: Swift.String, title: Swift.String, tag: Swift.String, metaData: Swift.String, isIncludedInReport: Swift.Bool, isLibrary: Swift.Bool, completion: @escaping (_ result: TruvideoMedia.StreamUploadRequestResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class StreamUploadRequestResponse : ObjectiveC.NSObject {
+  @objc final public let id: Swift.String
+  @objc final public let status: Swift.String
+  @objc final public let type: Swift.String
+  @objc final public let mediaId: Swift.String
+  @objc final public let tags: Foundation.NSDictionary?
+  @objc final public let metadata: Foundation.NSDictionary?
+  @objc final public let includeInReport: Swift.Bool
+  @objc final public let isLibrary: Swift.Bool
+  @objc final public let parts: Foundation.NSArray?
+  @objc final public let createdAt: Swift.String
+  @objc final public let fileURL: Swift.String
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class MediaResponse : ObjectiveC.NSObject {
@@ -126,6 +166,30 @@ import _SwiftConcurrencyShims
   @objc public func cancel(requestId: Foundation.UUID, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   @objc public func updateIncludeInReport(requestId: Foundation.UUID, _ includeInReport: Swift.Bool) throws
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func streamRetry(requestId: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func streamPause(requestId: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func streamResume(requestId: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func streamDelete(requestId: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func streamCancel(requestId: Swift.String, completion: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getStreamRequest(requestId: Swift.String, completion: @escaping (_ result: TruvideoMedia.StreamUploadRequestResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func getAllStreamRequests(completion: @escaping (_ result: [TruvideoMedia.StreamUploadRequestResponse], _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func streamUpload(requestId: Swift.String, title: Swift.String, tag: Swift.String, metaData: Swift.String, isIncludedInReport: Swift.Bool, isLibrary: Swift.Bool, completion: @escaping (_ result: TruvideoMedia.StreamUploadRequestResponse?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc deinit
 }
 extension TruvideoMedia.MediaStatus : Swift.Equatable {}
