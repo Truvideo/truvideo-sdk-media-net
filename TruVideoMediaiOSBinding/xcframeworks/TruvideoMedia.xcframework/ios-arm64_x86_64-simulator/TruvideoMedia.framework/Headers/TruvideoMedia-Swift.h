@@ -369,7 +369,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedi
 - (void)mediaBuilderWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(TruvideoMediaSdkUploadRequest * _Nullable, NSError * _Nullable))completion;
 - (void)getByIdWithId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(TruvideoMediaSdkUploadRequest * _Nullable, NSError * _Nullable))completion;
 - (void)getFileUploadRequestsByStatus:(enum MediaStatus)byStatus completion:(void (^ _Nonnull)(NSArray<TruvideoMediaSdkUploadRequest *> * _Nonnull, NSError * _Nullable))completion;
-- (void)searchWithType:(enum MediaType)type tags:(NSString * _Nullable)tags pageNumber:(NSInteger)pageNumber size:(NSInteger)size completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
+- (void)searchWithType:(enum MediaType)type tags:(NSString * _Nullable)tags isLibrary:(BOOL)isLibrary pageNumber:(NSInteger)pageNumber size:(NSInteger)size completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
+- (void)searchIdWithId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
 - (void)uploadRequest:(NSUUID * _Nonnull)requestId completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
 - (void)pauseRequest:(NSUUID * _Nonnull)requestId completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
 - (void)resumeRequest:(NSUUID * _Nonnull)requestId completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
@@ -810,7 +811,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoMedi
 - (void)mediaBuilderWithPath:(NSString * _Nonnull)path tag:(NSString * _Nonnull)tag metaData:(NSString * _Nonnull)metaData completion:(void (^ _Nonnull)(TruvideoMediaSdkUploadRequest * _Nullable, NSError * _Nullable))completion;
 - (void)getByIdWithId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(TruvideoMediaSdkUploadRequest * _Nullable, NSError * _Nullable))completion;
 - (void)getFileUploadRequestsByStatus:(enum MediaStatus)byStatus completion:(void (^ _Nonnull)(NSArray<TruvideoMediaSdkUploadRequest *> * _Nonnull, NSError * _Nullable))completion;
-- (void)searchWithType:(enum MediaType)type tags:(NSString * _Nullable)tags pageNumber:(NSInteger)pageNumber size:(NSInteger)size completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
+- (void)searchWithType:(enum MediaType)type tags:(NSString * _Nullable)tags isLibrary:(BOOL)isLibrary pageNumber:(NSInteger)pageNumber size:(NSInteger)size completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
+- (void)searchIdWithId:(NSString * _Nonnull)id completion:(void (^ _Nonnull)(NSArray<MediaResponse *> * _Nonnull, NSError * _Nullable))completion;
 - (void)uploadRequest:(NSUUID * _Nonnull)requestId completion:(void (^ _Nonnull)(MediaResponse * _Nullable, NSError * _Nullable))completion;
 - (void)pauseRequest:(NSUUID * _Nonnull)requestId completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;
 - (void)resumeRequest:(NSUUID * _Nonnull)requestId completion:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completion;

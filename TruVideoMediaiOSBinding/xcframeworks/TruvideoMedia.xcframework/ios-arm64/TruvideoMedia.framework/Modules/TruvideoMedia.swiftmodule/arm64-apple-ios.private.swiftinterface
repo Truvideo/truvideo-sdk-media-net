@@ -26,7 +26,10 @@ import _SwiftConcurrencyShims
   @objc final public func getFileUploadRequests(byStatus: TruvideoMedia.MediaStatus, completion: @escaping (_ result: [TruvideoMedia.TruvideoMediaSdkUploadRequest], _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc final public func search(type: TruvideoMedia.MediaType, tags: Swift.String?, pageNumber: Swift.Int, size: Swift.Int, completion: @escaping (_ result: [TruvideoMedia.MediaResponse], _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc final public func search(type: TruvideoMedia.MediaType, tags: Swift.String?, isLibrary: Swift.Bool, pageNumber: Swift.Int, size: Swift.Int, completion: @escaping (_ result: [TruvideoMedia.MediaResponse], _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func searchId(id: Swift.String, completion: @escaping (_ result: [TruvideoMedia.MediaResponse], _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func uploadRequest(_ requestId: Foundation.UUID, completion: @escaping (_ result: TruvideoMedia.MediaResponse?, _ error: (any Swift.Error)?) -> Swift.Void)

@@ -188,31 +188,107 @@ final public class TruvideoMedia: NSObject {
     
     
     
-    @objc public func search(type: MediaType, tags: String?, pageNumber: Int, size: Int, completion: @escaping (_ result: [MediaResponse], _ error: Error?) -> Void) {
+//    @objc public func search(type: MediaType, tags: String?, pageNumber: Int, size: Int, completion: @escaping (_ result: [MediaResponse], _ error: Error?) -> Void) {
+//        Task {
+//            do {
+//                let convertedType = convertMediaTypeToTruvideoType(type)
+//                var mediaTags: TruvideoSdkMediaTags? = nil
+//                
+//                if let tags = tags {
+//                    let tagsDict = try convertToDictionary(from: tags)
+//                    mediaTags = TruvideoSdkMediaTags.builder(dictionary: tagsDict).build()
+//                }
+//                
+//                let result = try await TruvideoSdkMedia.search(
+//                    type: convertedType,
+//                    tags: mediaTags,
+//                    pageNumber: pageNumber,
+//                    size: size
+//                )
+//                let convertedMediaList = result.content.map { $0.media }
+//                completion(convertedMediaList, nil)
+//            } catch {
+//                print("Search failed with error: \(error)")
+//                completion([], error)
+//            }
+//        }
+//    }
+    
+    
+    @objc
+    public func search(
+        type: MediaType,
+        tags: String?,
+        isLibrary: Bool,
+        pageNumber: Int,
+        size: Int,
+        completion: @escaping (_ result: [MediaResponse], _ error: Error?) -> Void
+    ) {
         Task {
             do {
+
                 let convertedType = convertMediaTypeToTruvideoType(type)
+
                 var mediaTags: TruvideoSdkMediaTags? = nil
-                
+
                 if let tags = tags {
                     let tagsDict = try convertToDictionary(from: tags)
-                    mediaTags = TruvideoSdkMediaTags.builder(dictionary: tagsDict).build()
+                    mediaTags = TruvideoSdkMediaTags
+                        .builder(dictionary: tagsDict)
+                        .build()
                 }
-                
-                let result = try await TruvideoSdkMedia.search(
+
+                let nativePage = max(pageNumber - 1, 0)
+
+                let response = try await TruvideoSdkMedia.search(
                     type: convertedType,
                     tags: mediaTags,
-                    pageNumber: pageNumber,
+                    isLibrary: isLibrary,
+                    pageNumber: nativePage,
                     size: size
                 )
-                let convertedMediaList = result.content.map { $0.media }
+
+                let convertedMediaList = response.content.map { $0.media }
+
                 completion(convertedMediaList, nil)
+
             } catch {
                 print("Search failed with error: \(error)")
                 completion([], error)
             }
         }
     }
+    
+    
+    
+    @objc
+    public func searchId(
+        id: String,
+        completion: @escaping (_ result: [MediaResponse], _ error: Error?) -> Void
+    ) {
+        Task {
+            do {
+
+                let media = try await TruvideoSdkMedia.getById(id)
+
+                guard let media = media else {
+                    completion([], nil)
+                    return
+                }
+
+                let convertedMediaList: [MediaResponse] = [
+                    media.media
+                ]
+
+                completion(convertedMediaList, nil)
+
+            } catch {
+                print("Search failed with error: \(error)")
+                completion([], error)
+            }
+        }
+    }
+    
         
     private func convertMediaStatusToTruvideoStatus(_ status: MediaStatus) -> TruvideoSdkMediaUploadRequest.Status {
         switch status {

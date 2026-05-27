@@ -103,8 +103,26 @@ namespace TruvideoMediaiOS
         [Export("getFileUploadRequestsByStatus:completion:")]
         void GetFileUploadRequests(MediaStatus byStatus, Action<NSArray, NSError> completion);
 
-        [Export("searchWithType:tags:pageNumber:size:completion:")]
-        void Search(MediaType type, [NullAllowed] string tags, nint pageNumber, nint size, Action<NSArray, NSError> completion);
+        // [Export("searchWithType:tags:pageNumber:size:completion:")]
+        // void Search(MediaType type, [NullAllowed] string tags, nint pageNumber, nint size, Action<NSArray, NSError> completion);
+        
+        // SEARCH
+
+        [Export("searchWithType:tags:isLibrary:pageNumber:size:completion:")]
+        void Search(
+            MediaType type,
+            [NullAllowed] string tags,
+            bool isLibrary,
+            nint pageNumber,
+            nint size,
+            Action<NSArray, NSError> completion
+        );
+
+        [Export("searchIdWithId:completion:")]
+        void SearchId(
+            string id,
+            Action<NSArray, NSError> completion
+        );
 
         [Export("uploadRequest:completion:")]
         void UploadRequest(NSUuid requestId, Action<MediaResponse, NSError> completion);

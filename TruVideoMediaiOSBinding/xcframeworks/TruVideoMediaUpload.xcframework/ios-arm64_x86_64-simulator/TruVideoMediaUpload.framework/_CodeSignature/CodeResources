@@ -6,19 +6,11 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		HFLqoSkiJ/iA/gNPh09m2esyibA=
-		</data>
-		<key>Modules/TruVideoMediaUpload.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
-		<data>
-		9WtD+iywd6Ow17NbQERZNhDu95k=
-		</data>
-		<key>Modules/TruVideoMediaUpload.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
-		<data>
-		EwjJ8303a7zk4CDOaHCUtU42YSY=
+		P6EV0FzAha+pWMA7TE2w8sWirfo=
 		</data>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		cGnZk7jP2177INvBakZRSt0QESw=
+		XhcCAa0dN3HFBq5dzIt+aUBAhtg=
 		</data>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,11 +26,11 @@
 		</data>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		9oOR1mNAHknx/mChEPQXKPDUFnA=
+		T15IJ0UcMYcL4aUQrA5EEGMosmI=
 		</data>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		cGnZk7jP2177INvBakZRSt0QESw=
+		XhcCAa0dN3HFBq5dzIt+aUBAhtg=
 		</data>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -54,7 +46,7 @@
 		</data>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		nYGvgQ3uXw6+ZioPdk2xngD7SsY=
+		aRypqysx7cNotDr9+FqzhT8bAd8=
 		</data>
 		<key>UploadsStore.momd/UploadsStore 2.mom</key>
 		<data>
@@ -91,25 +83,11 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Modules/TruVideoMediaUpload.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			tYfVIfBCOm21XlM59CksjG3wuPuMYnWDvCtEAieWSYI=
-			</data>
-		</dict>
-		<key>Modules/TruVideoMediaUpload.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			jBqbcbv4h3CVWny10t+AK0nRSK3wzHVaXJb7I0B1uiU=
-			</data>
-		</dict>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jmqn6/F+9M1qf9HUX23YalRhLQop41mHI9QYxHuLrdg=
+			cKKkK6/RFHsAQ9DfPBCiK2BNW9IJXN6u+w8bhloAaH8=
 			</data>
 		</dict>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -137,14 +115,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MDDyB/GuYABMDCAT+hOcp0XQi9y/NKlySZXzeGvqQhg=
+			QnwwvfWR22JazPROJ4B5U5BjHjHWUFkAFu5CQhe3shU=
 			</data>
 		</dict>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jmqn6/F+9M1qf9HUX23YalRhLQop41mHI9QYxHuLrdg=
+			cKKkK6/RFHsAQ9DfPBCiK2BNW9IJXN6u+w8bhloAaH8=
 			</data>
 		</dict>
 		<key>Modules/TruVideoMediaUpload.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -172,7 +150,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JECGeGX89tiyj9HLUXTxitoGQmH4diZPTb32l1rPrCY=
+			BqPKBcidjJJ9h3cB+bdMbzdz/tod3GowhFg3sRjGJ7s=
 			</data>
 		</dict>
 		<key>UploadsStore.momd/UploadsStore 2.mom</key>

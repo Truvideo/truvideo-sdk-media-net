@@ -519,7 +519,7 @@
           {
             "kind": "Function",
             "name": "search",
-            "printedName": "search(type:tags:pageNumber:size:completion:)",
+            "printedName": "search(type:tags:isLibrary:pageNumber:size:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -545,6 +545,12 @@
                   }
                 ],
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
               },
               {
                 "kind": "TypeNominal",
@@ -607,10 +613,87 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)searchWithType:tags:pageNumber:size:completion:",
-            "mangledName": "$s13TruvideoMediaAAC6search4type4tags10pageNumber4size10completionyAA0B4TypeO_SSSgS2iySayAA0B8ResponseCG_s5Error_pSgtctF",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)searchWithType:tags:isLibrary:pageNumber:size:completion:",
+            "mangledName": "$s13TruvideoMediaAAC6search4type4tags9isLibrary10pageNumber4size10completionyAA0B4TypeO_SSSgSbS2iySayAA0B8ResponseCG_s5Error_pSgtctF",
             "moduleName": "TruvideoMedia",
-            "objc_name": "searchWithType:tags:pageNumber:size:completion:",
+            "objc_name": "searchWithType:tags:isLibrary:pageNumber:size:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "searchId",
+            "printedName": "searchId(id:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([TruvideoMedia.MediaResponse], (any Swift.Error)?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "([TruvideoMedia.MediaResponse], (any Swift.Error)?)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[TruvideoMedia.MediaResponse]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "MediaResponse",
+                            "printedName": "TruvideoMedia.MediaResponse",
+                            "usr": "c:@M@TruvideoMedia@objc(cs)MediaResponse"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "(any Swift.Error)?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Error",
+                            "printedName": "any Swift.Error",
+                            "usr": "s:s5ErrorP"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoMedia@objc(cs)TruvideoMedia(im)searchIdWithId:completion:",
+            "mangledName": "$s13TruvideoMediaAAC8searchId2id10completionySS_ySayAA0B8ResponseCG_s5Error_pSgtctF",
+            "moduleName": "TruvideoMedia",
+            "objc_name": "searchIdWithId:completion:",
             "declAttributes": [
               "Final",
               "AccessControl",
@@ -6075,84 +6158,84 @@
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25161,
+      "offset": 27229,
       "length": 9,
       "value": "1"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25180,
+      "offset": 27248,
       "length": 5,
       "value": "2"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25195,
+      "offset": 27263,
       "length": 4,
       "value": "3"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25209,
+      "offset": 27277,
       "length": 6,
       "value": "4"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25225,
+      "offset": 27293,
       "length": 10,
       "value": "5"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25245,
+      "offset": 27313,
       "length": 13,
       "value": "6"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25321,
+      "offset": 27389,
       "length": 5,
       "value": "1"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25336,
+      "offset": 27404,
       "length": 5,
       "value": "2"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25351,
+      "offset": 27419,
       "length": 8,
       "value": "3"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "FloatLiteral",
-      "offset": 25627,
+      "offset": 27695,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "BooleanLiteral",
-      "offset": 25918,
+      "offset": 27986,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoMedia\/TruvideoMedia\/TruvideoMedia.swift",
       "kind": "IntegerLiteral",
-      "offset": 25990,
+      "offset": 28058,
       "length": 1,
       "value": "0"
     }

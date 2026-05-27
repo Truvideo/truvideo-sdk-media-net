@@ -8,8 +8,8 @@ namespace TruvideoMediaiOS {
     public enum MediaType : long 
     {
          audio = 0,
-         image = 1,
-         video = 2 ,
+         video = 1 ,
+         image = 2,
          document = 3
     }
     
