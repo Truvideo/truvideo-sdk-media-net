@@ -380,7 +380,8 @@
         "declKind": "Import",
         "moduleName": "TruVideoMediaUpload",
         "declAttributes": [
-          "AccessControl"
+          "AccessControl",
+          "Preconcurrency"
         ]
       },
       {

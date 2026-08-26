@@ -4,7 +4,3 @@ TruvideoMedia/derivedData
 TruvideoMedia/archives
 TruVideoMediaiOSBinding/bin
 TruVideoMediaiOSBinding/obj
-.sonarqube
-.sonar
-.env
-.env.*
